@@ -42,6 +42,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnTouchListener;
 
@@ -68,6 +69,12 @@ public class AwesomeBlaster extends Activity implements SensorEventListener, OnT
   public void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
+    
+    requestWindowFeature(Window.FEATURE_NO_TITLE);
+	getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+			WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+			WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     
     background = new GameBackground();
     images = new Images(this);
