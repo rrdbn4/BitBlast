@@ -11,32 +11,27 @@
     <application
         android:allowBackup="false"
         android:icon="@drawable/icon"
-        android:label="@string/app_name"
-        android:hardwareAccelerated="true" >
+        android:label="@string/app_name" >
         
         <activity
             android:name=".AwesomeBlaster"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.smulk.bitblast.activities.Begin"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.smulk.bitblast.activities.DeathScreen"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.smulk.bitblast.activities.SplashScreen"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,48 +41,35 @@
         <activity
             android:name=".AxisChooser"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.smulk.bitblast.activities.Feedback"
             android:label="Send Feedback"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".NameEntryScreen"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
 
         </activity>
         <activity
             android:name="com.smulk.bitblast.activities.Options"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
   
         </activity>
         <activity
             android:name=".billing.BillingActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
   
         </activity>
         <activity
             android:name="com.smulk.bitblast.activities.HowToGuide"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
-  
-        </activity>
-                <activity
-            android:name="com.smulk.bitblast.activities.Debug"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:screenOrientation="portrait" >
   
         </activity>
     </application>
