@@ -80,7 +80,7 @@ public class Bullet extends BaseObject
     return damage;
   }
   
-  public void update(GLSurfaceView surface, GameData gamedata, Hero hero, Sound sound)
+  public void update(GLSurfaceView surface, GameData gamedata, Sound sound)
   {
     if (isMoving())
     {

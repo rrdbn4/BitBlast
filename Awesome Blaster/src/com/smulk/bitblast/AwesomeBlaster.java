@@ -194,10 +194,10 @@ public class AwesomeBlaster extends Activity implements SensorEventListener, OnT
     goobler.update(surface, gamedata, hero, images);
     
     for(int i = 0; i < hero.bullets.length; i++)
-      hero.bullets[i].update(surface, gamedata, hero, sound);
+      hero.bullets[i].update(surface, gamedata, sound);
     
     for(int i = 0; i < goobler.bullets.length; i++)
-      goobler.bullets[i].update(surface, gamedata, hero, sound);
+      goobler.bullets[i].update(surface, gamedata, sound);
  
     for(int i = 0; i < block.length; i++)
       block[i].update(surface, gamedata, hero, sound);
