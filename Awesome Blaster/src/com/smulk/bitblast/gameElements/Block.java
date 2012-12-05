@@ -24,6 +24,7 @@ public class Block extends BaseMob
   private int color = 0;
   protected int blockGapCounter = 0;
   protected int damage = 1;
+  protected int pointValue;
   
   private final int colors[] = 
   {
@@ -67,37 +68,44 @@ public class Block extends BaseMob
       case Color.BLUE:
         srcX = 0 * width;
         srcY = 0 * height;
-        health = 6;
+        health = 7;
+        pointValue = 50;
         break;
       case Color.CYAN:
         srcX = 1 * width;
         srcY = 0 * height;
-        health = 5;
+        health = 6;
+        pointValue = 50;
         break;
       case Color.GREEN:
         srcX = 2 * width;
         srcY = 0 * height;
-        health = 4;
+        health = 5;
+        pointValue = 50;
         break;
       case Color.MAGENTA:
         srcX = 3 * width;
         srcY = 0 * height;
-        health = 3;
+        health = 4;
+        pointValue = 50;
         break;
       case Color.RED:
         srcX = 0 * width;
         srcY = 1 * height;
         health = 3;
+        pointValue = 50;
         break;
       case Color.WHITE:
         srcX = 1 * width;
         srcY = 1 * height;
         health = 2;
+        pointValue = 50;
         break;
       case Color.YELLOW:
         srcX = 2 * width;
         srcY = 1 * height;
         health = 1;
+        pointValue = 50;
         break;
     }
     
