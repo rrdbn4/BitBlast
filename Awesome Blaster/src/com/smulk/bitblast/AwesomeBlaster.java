@@ -9,8 +9,6 @@
 // High score table
 // Problem with shrapnel: Uses bitmap of large picture and cuts from that... Spritebatcher needs to take in an image, not an id
 
-//test
-//H#GQ1EI;AHU
 package com.smulk.bitblast;
 
 import javax.microedition.khronos.opengles.GL10;
