@@ -11,7 +11,7 @@
 
 //test
 
-package com.smulk.awesomeblaster;
+package com.smulk.bitblast;
 
 import javax.microedition.khronos.opengles.GL10;
 

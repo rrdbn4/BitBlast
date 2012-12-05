@@ -2,7 +2,7 @@ package com.smulk.bitblast.gameElements;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PowerupType;
 import com.smulk.bitblast.graphics.Images;

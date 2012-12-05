@@ -22,7 +22,7 @@ import android.view.WindowManager;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PrefKeys;

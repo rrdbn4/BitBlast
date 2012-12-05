@@ -1,6 +1,6 @@
 package com.smulk.bitblast.activities;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 import com.smulk.bitblast.data.PrefKeys;
 
 import android.app.Activity;

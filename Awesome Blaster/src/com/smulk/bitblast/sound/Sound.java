@@ -5,7 +5,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 import com.smulk.bitblast.data.GameData;
 
 public class Sound

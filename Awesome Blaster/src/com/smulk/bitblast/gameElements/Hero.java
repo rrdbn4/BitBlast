@@ -11,7 +11,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 import com.smulk.bitblast.activities.DeathScreen;
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PowerupType;

@@ -16,7 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnTouchListener;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 
 import com.smulk.bitblast.data.PrefKeys;
 import com.smulk.bitblast.utils.BBButton;

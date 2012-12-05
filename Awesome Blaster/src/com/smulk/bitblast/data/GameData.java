@@ -6,7 +6,7 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 import com.smulk.bitblast.graphics.Images;
 import com.smulk.bitblast.graphics.Shrapnel;
 import com.smulk.bitblast.gameElements.Hero;

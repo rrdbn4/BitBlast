@@ -25,9 +25,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 
-import com.smulk.awesomeblaster.AwesomeBlaster;
+import com.smulk.bitblast.AwesomeBlaster;
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PrefKeys;
 import com.smulk.bitblast.gameElements.Bullet;

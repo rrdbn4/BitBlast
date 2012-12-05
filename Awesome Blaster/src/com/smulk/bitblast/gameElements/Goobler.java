@@ -8,7 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.opengl.GLSurfaceView;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PowerupType;
 import com.smulk.bitblast.graphics.Images;

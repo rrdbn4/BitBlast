@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 
 public class Images
 {

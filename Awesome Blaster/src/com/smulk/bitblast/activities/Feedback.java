@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 
 import com.smulk.bitblast.data.PrefKeys;
 

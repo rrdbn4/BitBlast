@@ -12,7 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 
 import com.smulk.bitblast.data.PrefKeys;
 

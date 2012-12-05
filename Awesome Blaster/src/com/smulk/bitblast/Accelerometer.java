@@ -1,4 +1,4 @@
-package com.smulk.awesomeblaster;
+package com.smulk.bitblast;
 
 /****************************************************************************
 Copyright (c) 2010-2011 cocos2d-x.org

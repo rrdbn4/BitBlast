@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.smulk.awesomeblaster.R;
+import com.smulk.bitblast.R;
 
 public class Debug extends Activity
 {
