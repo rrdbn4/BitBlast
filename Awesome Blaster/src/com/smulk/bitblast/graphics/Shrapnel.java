@@ -75,8 +75,6 @@ public class Shrapnel extends BaseSprite
         break;
     }
     
-    Log.d("Shrapnel Color", " " + srcY);
-    
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
     //src = new Rect(0,0, image.getWidth(), image.getHeight());
 	}
