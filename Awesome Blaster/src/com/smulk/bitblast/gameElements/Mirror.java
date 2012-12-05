@@ -88,7 +88,10 @@ public class Mirror extends Block
               else
               {
                 if(!hero.bullets[k].getHitMirror())
+                {
                   hero.bullets[k].setSpeed(-hero.bullets[k].getSpeed());
+                  hero.bullets[k].setHitMirror(true);
+                }
               }
             }
           }

@@ -50,7 +50,7 @@ public class Bullet extends BaseObject
     startMoving();
   }
   
-  public void setHitMirrot(boolean value)
+  public void setHitMirror(boolean value)
   {
     hitMirror = value;
   }
