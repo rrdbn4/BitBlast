@@ -24,6 +24,7 @@ public class Block extends BaseMob
   private int color = 0;
   protected int blockGapCounter = 0;
   protected int damage = 1;
+  protected int pointMultiplier = 10;
   protected int pointValue;
   
   private final int colors[] = 
@@ -69,43 +70,43 @@ public class Block extends BaseMob
         srcX = 0 * width;
         srcY = 0 * height;
         health = 7;
-        pointValue = 50;
+        pointValue = health * pointMultiplier;
         break;
       case Color.CYAN:
         srcX = 1 * width;
         srcY = 0 * height;
         health = 6;
-        pointValue = 50;
+        pointValue = health * pointMultiplier;
         break;
       case Color.GREEN:
         srcX = 2 * width;
         srcY = 0 * height;
         health = 5;
-        pointValue = 50;
+        pointValue = health * pointMultiplier;
         break;
       case Color.MAGENTA:
         srcX = 3 * width;
         srcY = 0 * height;
         health = 4;
-        pointValue = 50;
+        pointValue = health * pointMultiplier;
         break;
       case Color.RED:
         srcX = 0 * width;
         srcY = 1 * height;
         health = 3;
-        pointValue = 50;
+        pointValue = health * pointMultiplier;
         break;
       case Color.WHITE:
         srcX = 1 * width;
         srcY = 1 * height;
         health = 2;
-        pointValue = 50;
+        pointValue = health * pointMultiplier;
         break;
       case Color.YELLOW:
         srcX = 2 * width;
         srcY = 1 * height;
         health = 1;
-        pointValue = 50;
+        pointValue = health * pointMultiplier;
         break;
     }
     
@@ -123,7 +124,7 @@ public class Block extends BaseMob
       if(sound.getBlockExplosion() != 0 && gamedata.getPlaySound())
          sound.getBlowUp().play(sound.getExplosion(), 1, 1, 0, 0, 1);
       
-      gamedata.addScore(50);
+      gamedata.addScore(pointValue);
       shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, color);
       shrapnel.setStart(mX + (width / 2), mY + (height / 2));
       //shrapnel.startShrapnel(gamedata, mX + (width / 2), mY + (height / 2), 7, 7, color);
