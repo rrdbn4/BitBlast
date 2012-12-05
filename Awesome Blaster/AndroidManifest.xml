@@ -14,7 +14,7 @@
         android:label="@string/app_name" >
         
         <activity
-            android:name=".AwesomeBlaster"
+            android:name=".BitBlast"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>

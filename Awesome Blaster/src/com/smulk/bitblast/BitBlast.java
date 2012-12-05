@@ -43,7 +43,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnTouchListener;
 
-public class AwesomeBlaster extends Activity implements SensorEventListener, OnTouchListener, Drawer
+public class BitBlast extends Activity implements SensorEventListener, OnTouchListener, Drawer
 {
   //ViewField view;
   GLSurfaceView surface;

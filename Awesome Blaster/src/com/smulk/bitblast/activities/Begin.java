@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 import com.smulk.bitblast.R;
 
-import com.smulk.bitblast.AwesomeBlaster;
+import com.smulk.bitblast.BitBlast;
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PrefKeys;
 import com.smulk.bitblast.gameElements.Bullet;
@@ -116,7 +116,7 @@ public class Begin extends Activity implements OnTouchListener
 		{	
 			if(BBStart.isClicked(event.getX(), event.getY()))
 			{
-				startActivity(new Intent(this, AwesomeBlaster.class));
+				startActivity(new Intent(this, BitBlast.class));
 				//TODO: Find out why is is a null pointer when going from options menu to in game
 				//if(playSound)
 					//mp.stop();
