@@ -20,7 +20,7 @@ public class Images
     R.drawable.mirror_break_powerup 
   };
   
-  private final int allSprites[] =
+  private static final int allSprites[] =
   { 
     R.drawable.arrows,
     R.drawable.back_button,

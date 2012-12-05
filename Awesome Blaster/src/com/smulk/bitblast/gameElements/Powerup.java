@@ -68,10 +68,59 @@ public class Powerup extends BaseObject
     type = powerup;
   }
   
-  public void setRandomType()
+  public void setRandomType(Images images)
   {
     type = PowerupType.randomPowerup();
-    image = Images.getPuImage(PowerupType.getIndex());
+    
+    switch(type)
+    {
+      case FREEZE_BLOCKS:
+        imageID = R.drawable.ice_powerup;
+        break;
+      case GOOBLER:
+        imageID = R.drawable.goobler_powerup;
+        break;
+      case INVINCIBLE:
+        imageID = R.drawable.invincability_powerup;
+        break;
+      case BREAK_MIRRORS:
+        imageID = R.drawable.mirror_break_powerup;
+        break;
+      default:
+        Log.d("setRandomType() Powerup.java", "Powerup imageID undefined");
+        break;
+    }
+  }
+  
+  private void powerupSelector(GameData gamedata, Images images, Hero hero)
+  {
+    switch(type)
+    {
+      case FREEZE_BLOCKS:
+        gamedata.setState(PowerupType.FREEZE_BLOCKS);
+        break;
+      case GOOBLER:
+        gamedata.setState(PowerupType.GOOBLER);
+        break;
+      case INVINCIBLE:
+        hero.setState(PowerupType.INVINCIBLE);
+        break;
+      case BREAK_MIRRORS:
+        hero.setState(PowerupType.BREAK_MIRRORS);
+        break;
+      default:
+        Log.d("powerupSelector() Powerup.java", "Powerup undefined");
+        break;
+    }
+    
+    if(gamedata.getState() == PowerupType.FREEZE_BLOCKS || hero.getState() == PowerupType.INVINCIBLE || hero.getState() == PowerupType.BREAK_MIRRORS)
+    {
+      //gamedata.timer.setTimer(350, gamedata.timer);
+    }
+    if(hero.getState() == PowerupType.INVINCIBLE)
+    {
+      hero.setImage((BitmapFactory.decodeResource(GameData.leContext.getResources(), R.drawable.invince_ship)));
+    }
   }
   
   public void update(GLSurfaceView surface, GameData gamedata, Images images, Hero hero)
@@ -108,7 +157,7 @@ public class Powerup extends BaseObject
         startMoving();
         setXRandomly(surface.getHeight() - getWidth());
         mY = 0;
-        setRandomType();
+        setRandomType(images);
       }
     }
   }
@@ -120,40 +169,6 @@ public class Powerup extends BaseObject
       dest = new Rect(mX, mY, mX + width, mY + height);
       spriteBatcher.draw(gl, imageID, src, dest);
       //canvas.drawBitmap(image, mX, mY, null);
-    }
-  }
-  
-  public void powerupSelector(GameData gamedata, Images images, Hero hero)
-  {
-    switch(type)
-    {
-      case FREEZE_BLOCKS:
-        imageID = R.drawable.ice_powerup;
-        gamedata.setState(PowerupType.FREEZE_BLOCKS);
-        break;
-      case GOOBLER:
-        imageID = R.drawable.goobler_powerup;
-        gamedata.setState(PowerupType.GOOBLER);
-        break;
-      case INVINCIBLE:
-        imageID = R.drawable.invincability_powerup;
-        hero.setState(PowerupType.INVINCIBLE);
-        break;
-      case BREAK_MIRRORS:
-        imageID = R.drawable.mirror_break_powerup;
-        hero.setState(PowerupType.BREAK_MIRRORS);
-        break;
-      default:
-        break;
-    }
-    
-    if(gamedata.getState() == PowerupType.FREEZE_BLOCKS || hero.getState() == PowerupType.INVINCIBLE || hero.getState() == PowerupType.BREAK_MIRRORS)
-    {
-      //gamedata.timer.setTimer(350, gamedata.timer);
-    }
-    if(hero.getState() == PowerupType.INVINCIBLE)
-    {
-      hero.setImage((BitmapFactory.decodeResource(GameData.leContext.getResources(), R.drawable.invince_ship)));
     }
   }
 }
