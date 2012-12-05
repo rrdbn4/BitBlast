@@ -68,7 +68,7 @@ public class Powerup extends BaseObject
     type = powerup;
   }
   
-  public void setRandomType(Images images)
+  public void setRandomType()
   {
     type = PowerupType.randomPowerup();
     
@@ -92,7 +92,7 @@ public class Powerup extends BaseObject
     }
   }
   
-  private void powerupSelector(GameData gamedata, Images images, Hero hero)
+  private void powerupSelector(GameData gamedata, Hero hero)
   {
     switch(type)
     {
@@ -123,7 +123,7 @@ public class Powerup extends BaseObject
     }
   }
   
-  public void update(GLSurfaceView surface, GameData gamedata, Images images, Hero hero)
+  public void update(GLSurfaceView surface, GameData gamedata, Hero hero)
   {
     if(isMoving())
     {
@@ -137,7 +137,7 @@ public class Powerup extends BaseObject
         {
           if(hit(hero.bullets[i]))
           {
-            powerupSelector(gamedata, images, hero);
+            powerupSelector(gamedata, hero);
             hero.bullets[i].resetBullet();
             resetPowerup();    
           }
@@ -145,7 +145,7 @@ public class Powerup extends BaseObject
         
         if(hero.hit(this))
         {
-          powerupSelector(gamedata, images, hero);
+          powerupSelector(gamedata, hero);
           resetPowerup();
         }
       }
@@ -157,7 +157,7 @@ public class Powerup extends BaseObject
         startMoving();
         setXRandomly(surface.getHeight() - getWidth());
         mY = 0;
-        setRandomType(images);
+        setRandomType();
       }
     }
   }

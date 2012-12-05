@@ -200,7 +200,7 @@ public class AwesomeBlaster extends Activity implements SensorEventListener, OnT
     for(int i=0; i < mirror.length; i++)
       mirror[i].update(surface, gamedata, hero);
     
-    powerup.update(surface, gamedata, images, hero);
+    powerup.update(surface, gamedata, hero);
   }
   
   private void drawResult(GL10 gl, SpriteBatcher spriteBatcher)
