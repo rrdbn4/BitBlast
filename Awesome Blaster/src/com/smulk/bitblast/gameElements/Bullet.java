@@ -15,23 +15,23 @@ import com.smulk.bitblast.sound.Sound;
 
 public class Bullet extends BaseObject
 {
-  private boolean beenHit = false;
   private boolean playSound = false;
+  private boolean hitMirror = false;
   
   private int damage;
   private int defaultDamage;
   
   private int speed;
-  private int resetSpeed;
+  private int defaultSpeed;
   
-  public Bullet(Context context, int rSpeed, int dDamage)
+  public Bullet(Context context, int dSpeed, int dDamage)
   {
     imageID = R.drawable.bullet;
     image = BitmapFactory.decodeResource(context.getResources(), imageID);
     setDimensions(image.getHeight(), image.getWidth());
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
     
-    resetSpeed = rSpeed;
+    defaultSpeed = dSpeed;
     defaultDamage = dDamage;
     resetBullet();
   }
@@ -39,9 +39,9 @@ public class Bullet extends BaseObject
   public void resetBullet()
   {
     resetObject();
-    speed = resetSpeed;
+    speed = defaultSpeed;
     damage = defaultDamage;
-    beenHit = false;
+    hitMirror = false;
   }
   
   public void shoot()
@@ -50,14 +50,14 @@ public class Bullet extends BaseObject
     startMoving();
   }
   
-  public void beenHit()
+  public void setHitMirrot(boolean value)
   {
-    beenHit = true;
-  } 
+    hitMirror = value;
+  }
   
-  public boolean hasBeenBit()
+  public boolean getHitMirror()
   {
-    return beenHit;
+    return hitMirror;
   }
   
   public void setSpeed(int value)
@@ -98,9 +98,7 @@ public class Bullet extends BaseObject
       else if (mY >= surface.getHeight())
         resetBullet();
       else
-      {
         mY += speed;
-      }
     }
   }
   

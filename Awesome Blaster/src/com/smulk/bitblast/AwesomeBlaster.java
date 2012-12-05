@@ -1,6 +1,5 @@
 // TODO List
 // Fix goobler staying red. Requires timer in new thread
-// fix bullets sticking in mirrors.
 // -Add stats
 // -Add power-ups such as slow down
 // -Add new weapons available for money

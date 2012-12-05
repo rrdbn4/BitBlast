@@ -87,9 +87,8 @@ public class Mirror extends Block
               }
               else
               {
-                //causes bullets to get stuck in mirror. 
-                hero.bullets[k].setSpeed(-hero.bullets[k].getSpeed());
-                //hero.bullets[k].reverse();
+                if(!hero.bullets[k].getHitMirror())
+                  hero.bullets[k].setSpeed(-hero.bullets[k].getSpeed());
               }
             }
           }
