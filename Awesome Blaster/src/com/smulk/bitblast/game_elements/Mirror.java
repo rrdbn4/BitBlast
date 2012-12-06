@@ -31,15 +31,17 @@ public class Mirror extends Block
     shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, Color.DKGRAY);
     
     defaultDamage = 1;
+    defaultSpeed = GameData.MIRROR_SPEED;
     setSpawnChance(800);
     resetMirror();
   }
   
   private void resetMirror()
   {
+  	resetMob();
   	damage = 1;
     beenHit = false;
-    resetMob();
+    speed = defaultSpeed;
   }
   
   public void update(GLSurfaceView surface, GameData gamedata, Hero hero)
@@ -68,7 +70,7 @@ public class Mirror extends Block
         else  //if it is moving normally
         {
           if(gamedata.getState() != PowerupType.FREEZE_BLOCKS)
-             mY += GameData.MIRROR_SPEED;
+             mY += speed;
           
           for(int k = 0; k < GameData.BULLET_NUM; k++)
           {

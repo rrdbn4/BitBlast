@@ -23,6 +23,9 @@ public class Block extends BaseMob
   
   private int color = -1;
   
+  protected int speed;
+  protected int defaultSpeed;
+  
   protected int damage = 1;
   protected int defaultDamage;
   
@@ -41,6 +44,7 @@ public class Block extends BaseMob
     shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, color);
     
     defaultDamage = 1;
+    defaultSpeed = GameData.BLOCK_SPEED;
     //src = new Rect(srcX, srcY, width + srcX, height + srcY);
     
     //shrapnel = new Shrapnel(GameData.leContext);
@@ -53,6 +57,7 @@ public class Block extends BaseMob
   public void resetBlock()
   {
   	resetMob();
+  	speed = defaultSpeed;
   	damage = defaultDamage;
     color = GameData.blockColors[rand.nextInt(GameData.blockColors.length)];
     
@@ -142,7 +147,7 @@ public class Block extends BaseMob
       else
       {
         if(gamedata.getState() != PowerupType.FREEZE_BLOCKS)
-           mY += GameData.BLOCK_SPEED;
+           mY += speed;
         
         if(hit(hero))
         {
