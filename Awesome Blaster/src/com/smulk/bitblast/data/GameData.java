@@ -19,15 +19,19 @@ public class GameData
   private boolean playSound = true;
   private boolean playMusic = true;
   private boolean isRunning = false;
+  private boolean isAllowBlockSpawn = false;
   
 
-  private boolean mirrorFreeze = false;
+
+
+private boolean mirrorFreeze = false;
   private boolean blockFreeze = false;
   
   private int score = 0;
   private int prevScore = 0;
   private int explosion = 0;
   private int blockExplosion = 0;
+  private int gapCounter = 0;
   
   private static final String SCORE_KEY = "2n3odmwo";
   
@@ -37,7 +41,7 @@ public class GameData
   public static final int MIRROR_NUM = 10;
   public static final int MAX_LIVES = 10;
   public static final int MIRROR_GAP = 100;
-  public static final int BLOCK_GAP = 15;
+	public static final int GAP_THRESHOLD = 40;
   public static final int SHRAPNEL_SIZE = 10;
   public static final int SHRAPNEL_DECOR_NUM = 10;
   public static final int SHRAPNEL_DECOR_SIZE = 3;
@@ -175,6 +179,16 @@ public class GameData
     return score;
   }
   
+  public boolean isAllowBlockSpawn()
+  {
+  	return isAllowBlockSpawn;
+  }
+
+  public void setAllowBlockSpawn(boolean isAllowBlockSpawn)
+  {
+  	this.isAllowBlockSpawn = isAllowBlockSpawn;
+  }
+  
   /*
   public void setSpaceCounter(int value)
   {
@@ -211,6 +225,21 @@ public class GameData
   {
     blockExplosion = value;
   }
+  
+  public boolean hasMetGapThreshold()
+	{
+		return gapCounter > GameData.GAP_THRESHOLD;
+	}
+	
+	public void incrementGapCounter()
+	{
+		gapCounter++;
+	}
+	
+	public void resetGapCounter()
+	{
+		gapCounter = 0;
+	}
   
   public int getBlockExplosion()
   {

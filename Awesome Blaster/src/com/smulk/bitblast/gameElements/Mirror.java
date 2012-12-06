@@ -45,14 +45,12 @@ public class Mirror extends Block
   public void update(GLSurfaceView surface, GameData gamedata, Hero hero)
   {
     {
-      blockGapCounter++;
       
       if(!isMoving())
       {     
         //add mirror
-        if(spawn() && !gamedata.getMirrorFreeze() && blockGapCounter >= GameData.MIRROR_GAP && gamedata.getState() != PowerupType.FREEZE_BLOCKS)
+        if(spawn() && !gamedata.getMirrorFreeze() && gamedata.getState() != PowerupType.FREEZE_BLOCKS)
         {
-          blockGapCounter = 0;
           startMoving();
           setXRandomly(surface.getWidth() - width);
           mY = 0;

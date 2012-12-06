@@ -7,10 +7,27 @@
 // -Add easter eggs
 // High score table
 // Problem with shrapnel: Uses bitmap of large picture and cuts from that... Spritebatcher needs to take in an image, not an id
+// Fix block gap counter issue
 
 package com.smulk.bitblast;
 
 import javax.microedition.khronos.opengles.GL10;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.media.AudioManager;
+import android.opengl.GLSurfaceView;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PrefKeys;
@@ -25,23 +42,6 @@ import com.smulk.bitblast.graphics.HUD;
 import com.smulk.bitblast.graphics.Images;
 import com.smulk.bitblast.graphics.SpriteBatcher;
 import com.smulk.bitblast.sound.Sound;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.media.AudioManager;
-import android.opengl.GLSurfaceView;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.View.OnTouchListener;
 
 public class BitBlast extends Activity implements SensorEventListener, OnTouchListener, Drawer
 {
@@ -67,11 +67,13 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
   {
     super.onCreate(savedInstanceState);
     
-    requestWindowFeature(Window.FEATURE_NO_TITLE);
-	getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-			WindowManager.LayoutParams.FLAG_FULLSCREEN);
-	getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
-			WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
     
     background = new GameBackground();
     images = new Images(this);
@@ -205,6 +207,7 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
       mirror[i].update(surface, gamedata, hero);
     
     powerup.update(surface, gamedata, hero);
+    gamedata.incrementGapCounter();
   }
   
   private void drawResult(GL10 gl, SpriteBatcher spriteBatcher)

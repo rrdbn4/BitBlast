@@ -22,7 +22,6 @@ public class Block extends BaseMob
   protected boolean beenHit;
   
   private int color = 0;
-  protected int blockGapCounter = 0;
   protected int damage = 1;
   protected int pointMultiplier = 10;
   protected int pointValue;
@@ -134,7 +133,6 @@ public class Block extends BaseMob
   
   public void update(GLSurfaceView surface, GameData gamedata, Hero hero, Sound sound)
   {
-    blockGapCounter++;
     if (isMoving())
     {
       if (mY == 0)
@@ -179,13 +177,13 @@ public class Block extends BaseMob
     else
     // if it isn't moving
     {
-      if (spawn() && !gamedata.getBlockFreeze() && blockGapCounter >= GameData.BLOCK_GAP 
-          && gamedata.getState() != PowerupType.FREEZE_BLOCKS) 
+      if (spawn() && !gamedata.getBlockFreeze() && gamedata.getState() != PowerupType.FREEZE_BLOCKS 
+      		&& gamedata.hasMetGapThreshold()) 
       {
         //initialize block
-        blockGapCounter = 0;
         startMoving();
         setXRandomly(surface.getWidth() - getWidth());
+        gamedata.resetGapCounter();
         mY = 0;
       }
     }
