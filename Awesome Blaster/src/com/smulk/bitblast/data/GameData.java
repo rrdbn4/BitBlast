@@ -20,11 +20,8 @@ public class GameData
   private boolean playMusic = true;
   private boolean isRunning = false;
   private boolean isAllowBlockSpawn = false;
-  
 
-
-
-private boolean mirrorFreeze = false;
+  private boolean mirrorFreeze = false;
   private boolean blockFreeze = false;
   
   private int score = 0;
@@ -46,7 +43,7 @@ private boolean mirrorFreeze = false;
   public static final int SHRAPNEL_DECOR_NUM = 10;
   public static final int SHRAPNEL_DECOR_SIZE = 3;
   public static final int SHRAPNEL_BLOWUP_SIZE = 10;
-  public static final int HERO_BULLET_SPEED = -20; //negative to shoot up since (0,0) is at the top left
+  public static final int HERO_BULLET_SPEED = -20; //negative to shoot up
   public static final int GOOBLER_BULLET_SPEED = 20;
   public static final int MIRROR_SPEED = 2;
   public static final int BLOCK_SPEED = 4;
@@ -62,41 +59,22 @@ private boolean mirrorFreeze = false;
   
   private PowerupType state;
   
-  public BBButton BBplayPause = new BBButton();
-  
-  //public Timer timer;
+  public BBButton BBplayPause = new BBButton();;
   
   public Thread thread = null;
   
   public static Context leContext;
-  
-  //public Bullet enemyBullets[];
-  //public Mirror mirror[];
+
   public Shrapnel blasts[];
   
   public GameData(Context context)
   {
-    
-    //enemyBullets = new Bullet[ENEMY_BULLET_NUM];
-
     blasts = new Shrapnel[SHRAPNEL_DECOR_NUM];
-    
-    //timer = new Timer();
     
     leContext = context;
     
-    initialzeArrays();
-  }
-  
-  private void initialzeArrays()
-  {
-    /*
-    for(int i=0; i < enemyBullets.length; i++)
-      enemyBullets[i] = new Bullet(leContext);
-      */
     for(int i=0; i < blasts.length; i++)
       blasts[i] = new Shrapnel(leContext, SHRAPNEL_DECOR_SIZE, SHRAPNEL_DECOR_SIZE, Color.WHITE);
-      //blasts[i] = new Shrapnel(leContext, SHRAPNEL_DECOR_SIZE, SHRAPNEL_DECOR_SIZE, Color.WHITE);
   }
   
   public void setResetState(Boolean value)
@@ -189,18 +167,6 @@ private boolean mirrorFreeze = false;
   	this.isAllowBlockSpawn = isAllowBlockSpawn;
   }
   
-  /*
-  public void setSpaceCounter(int value)
-  {
-    spaceCounter = value;
-  }
-  
-  public int getSpaceCounter()
-  {
-    return spaceCounter;
-  }
-  */
-  
   public void setPrevScore(int value)
   {
     prevScore = value;
@@ -245,50 +211,6 @@ private boolean mirrorFreeze = false;
   {
     return blockExplosion;
   }
-  
-  /*
-  public void setHeight(int value)
-  {
-    height = value;
-  }
-  
-  public int getHeight()
-  {
-    return height;
-  }
-  
-  public void setWidth(int value)
-  {
-    width = value;
-  }
-  
-  public int getWidth()
-  {
-    return width;
-  }
-  */
-  
-  /*
-  public void setChange(float value)
-  {
-    change = value;
-  }
-  
-  public float getChange()
-  {
-    return change;
-  }
-  
-  public void setShipPosition(float value)
-  {
-    shipPosition = value;
-  }
-  
-  public float getShipPosition()
-  {
-    return shipPosition;
-  }
-  */
   
   public static String getScoreKey()
   {

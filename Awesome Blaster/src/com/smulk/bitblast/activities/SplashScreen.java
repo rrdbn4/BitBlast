@@ -32,14 +32,13 @@ public class SplashScreen extends Activity
 		{
 			public void run()
 			{
-			  //TODO: uncomment sleep statement
+			  //TODO: uncomment sleep statement when product is finalized 
 			  /*
 				try
 				{
 					sleep(3000);
 				} catch (InterruptedException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				*/

@@ -1,13 +1,22 @@
 // TODO List
-// Fix goobler staying red. Requires timer in new thread
-// -Add stats
-// -Add power-ups such as slow down
-// -Add new weapons available for money
-// -Make power-ups available for money
-// -Add easter eggs
-// High score table
-// Problem with shrapnel: Uses bitmap of large picture and cuts from that... Spritebatcher needs to take in an image, not an id
-// Fix block gap counter issue
+// ======= Bugs =======
+// Problem with shrapnel: Uses bitmap of large picture and cuts from that... Spritebatcher needs to take in an image, not an id for more flexibility
+// ==Requires timer in new thread==
+// - Goobler staying red
+// - Powerups lasting forever
+// - Continue button on death screen not working
+// ====================
+
+// ======= New Features =======
+// - Level system. Progressively gets harder
+// - Upgrade screen. Can buy new weapons, etc. Money based on score
+// - Ability to buy temporary powerups
+// - Highscore table
+// ============================
+
+// ======= Powerups =======
+// - Slow down should replace freeze
+// ========================
 
 package com.smulk.bitblast;
 
@@ -45,7 +54,6 @@ import com.smulk.bitblast.sound.Sound;
 
 public class BitBlast extends Activity implements SensorEventListener, OnTouchListener, Drawer
 {
-  //ViewField view;
   GLSurfaceView surface;
   SensorManager accel;
   SharedPreferences data;
@@ -61,6 +69,7 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
   private Goobler goobler;
   private Mirror mirror[];
   private Powerup powerup;
+  private HUD hud;
   
   @Override
   public void onCreate(Bundle savedInstanceState)
@@ -72,39 +81,13 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-
-    
-    background = new GameBackground();
-    images = new Images(this);
-    gamedata = new GameData(this);
-    sound = new Sound();
-    
-    hero = new Hero(this, images);
-    
-    block = new Block[GameData.BLOCK_NUM];
-    
-    for (int i = 0; i < GameData.BLOCK_NUM; i++)
-    {
-      block[i] = new Block(this, images);
-    }
-    
-    goobler = new Goobler(this);
-    
-    mirror = new Mirror[GameData.MIRROR_NUM];
-        
-    for(int i = 0; i < mirror.length; i++)
-      mirror[i] = new Mirror(this, images);
-    
-    
-    powerup = new Powerup(this);
-    
-    
-    
+		
     surface = new GLSurfaceView(this);
     setContentView(surface);
     surface.setRenderer(new SpriteBatcher(getResources(), images.getSprites(), this));
     surface.setOnTouchListener(this);
+		
+		initialize();
     
     accel = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
     if (accel.getSensorList(Sensor.TYPE_ACCELEROMETER).size() != 0)
@@ -124,6 +107,29 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     }
     gamedata.setPlaySound((prefs.getBoolean(PrefKeys.PREFS_SOUND_FX_ENABLED_KEY, true)));
     gamedata.setPlayMusic((prefs.getBoolean(PrefKeys.PREFS_MUSIC_ENABLED_KEY, true)));
+  }
+  
+  private void initialize()
+  {
+    background = new GameBackground();
+    gamedata = new GameData(this);
+    images = new Images(this);
+    sound = new Sound();
+    
+    hero = new Hero(this, images);
+    
+    block = new Block[GameData.BLOCK_NUM];
+    for (int i = 0; i < GameData.BLOCK_NUM; i++)
+      block[i] = new Block(this, images);
+    
+    goobler = new Goobler(this);
+    
+    mirror = new Mirror[GameData.MIRROR_NUM];
+    for(int i = 0; i < mirror.length; i++)
+      mirror[i] = new Mirror(this, images);
+    
+    powerup = new Powerup(this);
+    hud = new HUD(this);
   }
   
   @Override
@@ -194,9 +200,6 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     hero.update(surface, gamedata, goobler);
     goobler.update(surface, gamedata, hero, images);
     
-    for(int i = 0; i < hero.bullets.length; i++)
-      hero.bullets[i].update(surface, gamedata, sound);
-    
     for(int i = 0; i < goobler.bullets.length; i++)
       goobler.bullets[i].update(surface, gamedata, sound);
  
@@ -205,6 +208,9 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     
     for(int i=0; i < mirror.length; i++)
       mirror[i].update(surface, gamedata, hero);
+    
+    for(int i = 0; i < hero.bullets.length; i++)
+      hero.bullets[i].update(surface, gamedata, sound);
     
     powerup.update(surface, gamedata, hero);
     gamedata.incrementGapCounter();
@@ -216,9 +222,6 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     hero.draw(gl, spriteBatcher);
     goobler.draw(gl, spriteBatcher);
     
-    for(int i = 0; i < hero.bullets.length; i++)
-      hero.bullets[i].draw(gl, spriteBatcher);
-    
     for(int i = 0; i < goobler.bullets.length; i++)
       goobler.bullets[i].draw(gl, spriteBatcher);
     
@@ -228,9 +231,12 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     for(int i=0; i < mirror.length; i++)
       mirror[i].draw(gl, spriteBatcher);
     
+    for(int i = 0; i < hero.bullets.length; i++)
+      hero.bullets[i].draw(gl, spriteBatcher);
+    
     powerup.draw(gl, spriteBatcher, gamedata, images, hero);
     
-    HUD.displayHearts(surface, gl, spriteBatcher, gamedata, images, hero);
+    hud.displayHearts(surface, gl, spriteBatcher, gamedata, hero);
     //HUD.displayPauseButton(gl, spriteBatcher, gamedata, images);
   }
 }

@@ -239,7 +239,7 @@ public class DeathScreen extends Activity implements OnTouchListener, OnCompleti
 			
 			super.onDraw(canvas);
 			canvas.drawARGB(50, counter, 50, 50);
-			Paint paint = new Paint(); //TODO fix
+			Paint paint = new Paint();
 			paint.setColor(Color.WHITE);
 			paint.setTextSize(50);
 			paint.setTextAlign(Align.CENTER);

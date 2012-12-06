@@ -8,17 +8,7 @@ import com.smulk.bitblast.R;
 
 public class Images
 {
-  private Bitmap mirror, enemy, enemyMad, pause, heart;
-  
-  private static Bitmap puImages[];
-  
-  private final int powerupNames[] =
-  { 
-    R.drawable.ice_powerup, 
-    R.drawable.goobler_powerup, 
-    R.drawable.invincability_powerup, 
-    R.drawable.mirror_break_powerup 
-  };
+  private Bitmap enemy, enemyMad;
   
   private static final int allSprites[] =
   { 
@@ -53,7 +43,6 @@ public class Images
     R.drawable.options_button,
     R.drawable.pause,
     R.drawable.play,
-    R.drawable.progress,
     R.drawable.ship,
     R.drawable.test_ship,
     R.drawable.stats_button,
@@ -63,27 +52,14 @@ public class Images
   };
   
   public Images(Context context)
-  {
-    puImages = new Bitmap[powerupNames.length];
-    for(int i = 0; i < powerupNames.length; i++)
-      puImages[i]= BitmapFactory.decodeResource(context.getResources(), powerupNames[i]);
-    
-    //progress = BitmapFactory.decodeResource(context.getResources(), R.drawable.progress);
-    mirror = BitmapFactory.decodeResource(context.getResources(), R.drawable.mirror);
+  { 
     enemy = BitmapFactory.decodeResource(context.getResources(), R.drawable.goobler);
     enemyMad = BitmapFactory.decodeResource(context.getResources(), R.drawable.goobler_mad);
-    pause = BitmapFactory.decodeResource(context.getResources(), R.drawable.pause);
-    heart = BitmapFactory.decodeResource(context.getResources(), R.drawable.heart);
   }
   
   public int[] getSprites()
   {
     return allSprites;
-  }
-
-  public Bitmap getMirror()
-  {
-    return mirror;
   }
   
   public Bitmap getEnemy()
@@ -94,20 +70,5 @@ public class Images
   public Bitmap getEnemyMad()
   {
     return enemyMad;
-  }
-  
-  public Bitmap getPause()
-  {
-    return pause;
-  }
-  
-  public Bitmap getHeart()
-  {
-    return heart;
-  }
-  
-  public static Bitmap getPuImage(int i)
-  {
-    return puImages[i];
   }
 }
