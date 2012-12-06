@@ -1,4 +1,4 @@
-package com.smulk.bitblast.gameElements;
+package com.smulk.bitblast.game_elements;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -109,7 +109,7 @@ public class Powerup extends BaseObject
         hero.setState(PowerupType.BREAK_MIRRORS);
         break;
       default:
-        Log.d("powerupSelector() Powerup.java", "Powerup undefined");
+        Log.d("powerupSelector(), Powerup.java", "Powerup undefined.");
         break;
     }
     
@@ -168,7 +168,6 @@ public class Powerup extends BaseObject
     {
       dest = new Rect(mX, mY, mX + width, mY + height);
       spriteBatcher.draw(gl, imageID, src, dest);
-      //canvas.drawBitmap(image, mX, mY, null);
     }
   }
 }

@@ -26,8 +26,8 @@ import com.smulk.bitblast.R;
 
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PrefKeys;
-import com.smulk.bitblast.gameElements.Bullet;
-import com.smulk.bitblast.gameElements.Goobler;
+import com.smulk.bitblast.game_elements.Bullet;
+import com.smulk.bitblast.game_elements.bosses.Burrak;
 import com.smulk.bitblast.graphics.Shrapnel;
 import com.smulk.bitblast.utils.BBButton;
 
@@ -193,7 +193,7 @@ public class DeathScreen extends Activity implements OnTouchListener, OnCompleti
 		private boolean countingDown, firstRun = true;
 		private Bitmap ship, enemy, bullet;
 		private Bitmap continueBut = BitmapFactory.decodeResource(getResources(), R.drawable.continue_button);
-		private Goobler goobler;
+		private Burrak burrakBoss;
 		//private Shrapnel blasts[];
 		private Bullet bullets[];
 		
@@ -216,7 +216,7 @@ public class DeathScreen extends Activity implements OnTouchListener, OnCompleti
 			}
 			*/
 			
-			goobler = new Goobler(GameData.leContext);
+			burrakBoss = new Burrak(GameData.leContext);
 			ship = BitmapFactory.decodeResource(getResources(), R.drawable.ship);
 			enemy = BitmapFactory.decodeResource(getResources(), R.drawable.goobler_mad);
 			bullet = BitmapFactory.decodeResource(getResources(), R.drawable.bullet);
@@ -263,7 +263,7 @@ public class DeathScreen extends Activity implements OnTouchListener, OnCompleti
 						counter2 = 0;
 						bullets[i].startMoving();
 						bullets[i].setmX((canvas.getWidth()/2 - bullet.getWidth()/2));
-						bullets[i].setmY((goobler.getmY() + enemy.getHeight()));
+						bullets[i].setmY((burrakBoss.getmY() + enemy.getHeight()));
 					}
 				}
 			}
@@ -308,7 +308,7 @@ public class DeathScreen extends Activity implements OnTouchListener, OnCompleti
 						getHeight()/2 + paint.getTextSize(), paint);
 			}
 			
-			goobler.setmX((canvas.getWidth()/2) - (enemy.getWidth()/2));
+			burrakBoss.setmX((canvas.getWidth()/2) - (enemy.getWidth()/2));
 			//TODO: Uncomment when implemented properly
 			//goobler.bounce(canvas, enemy, 3, (int)(getHeight()*0.7), (int)(getHeight()*0.1));
 			canvas.drawBitmap(ship, (canvas.getWidth()/2) - (ship.getWidth()/2), getHeight() - ship.getHeight() - 10, null);

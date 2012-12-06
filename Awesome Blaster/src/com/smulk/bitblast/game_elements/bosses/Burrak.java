@@ -1,4 +1,4 @@
-package com.smulk.bitblast.gameElements;
+package com.smulk.bitblast.game_elements.bosses;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -11,10 +11,15 @@ import android.opengl.GLSurfaceView;
 import com.smulk.bitblast.R;
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PowerupType;
+import com.smulk.bitblast.game_elements.BaseMob;
+import com.smulk.bitblast.game_elements.Bullet;
+import com.smulk.bitblast.game_elements.Hero;
 import com.smulk.bitblast.graphics.Images;
 import com.smulk.bitblast.graphics.SpriteBatcher;
 
-public class Goobler extends BaseMob
+//TODO: the image of this boss should be a ship to match the theme of the game
+
+public class Burrak extends BaseMob
 {
   private final int MAX_HEALTH = 20;
   private final int SHOOT_CHANCE = 100;
@@ -22,7 +27,6 @@ public class Goobler extends BaseMob
   private boolean isMovingRandomly;
   private boolean goingDown;  
   private boolean goingLeft;
-  //private boolean shoot = false;
   private boolean isMad = false;
   private boolean showRed = false;
   
@@ -30,7 +34,7 @@ public class Goobler extends BaseMob
   
   private int madCounter = 0;
   
-  public Goobler(Context context)
+  public Burrak(Context context)
   {
     imageID = R.drawable.goobler;
     image = BitmapFactory.decodeResource(context.getResources(), imageID);
@@ -72,7 +76,7 @@ public class Goobler extends BaseMob
   
   private boolean shootChance()
   {
-    return rand.nextInt(SHOOT_CHANCE) == 0;
+    return rand.nextInt(SHOOT_CHANCE) == 1;
   }
   
   private void moveTowardsShip(GLSurfaceView surface, final int speed, final Hero hero, Bitmap picture)

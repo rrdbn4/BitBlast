@@ -1,4 +1,4 @@
-package com.smulk.bitblast.gameElements;
+package com.smulk.bitblast.game_elements;
 
 public class BaseObject extends BaseSprite
 {

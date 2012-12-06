@@ -1,10 +1,12 @@
 // TODO List
 // ======= Bugs =======
 // Problem with shrapnel: Uses bitmap of large picture and cuts from that... Spritebatcher needs to take in an image, not an id for more flexibility
+// - Continue button on death screen not working
+//
+//
 // ==Requires timer in new thread==
 // - Goobler staying red
 // - Powerups lasting forever
-// - Continue button on death screen not working
 // ====================
 
 // ======= New Features =======
@@ -40,11 +42,11 @@ import android.view.WindowManager;
 
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PrefKeys;
-import com.smulk.bitblast.gameElements.Block;
-import com.smulk.bitblast.gameElements.Goobler;
-import com.smulk.bitblast.gameElements.Hero;
-import com.smulk.bitblast.gameElements.Mirror;
-import com.smulk.bitblast.gameElements.Powerup;
+import com.smulk.bitblast.game_elements.Block;
+import com.smulk.bitblast.game_elements.Hero;
+import com.smulk.bitblast.game_elements.Mirror;
+import com.smulk.bitblast.game_elements.Powerup;
+import com.smulk.bitblast.game_elements.bosses.Burrak;
 import com.smulk.bitblast.graphics.Drawer;
 import com.smulk.bitblast.graphics.GameBackground;
 import com.smulk.bitblast.graphics.HUD;
@@ -66,7 +68,7 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
   
   private Hero hero;
   private Block block[];
-  private Goobler goobler;
+  private Burrak burrakBoss;
   private Mirror mirror[];
   private Powerup powerup;
   private HUD hud;
@@ -81,11 +83,6 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		
-    surface = new GLSurfaceView(this);
-    setContentView(surface);
-    surface.setRenderer(new SpriteBatcher(getResources(), images.getSprites(), this));
-    surface.setOnTouchListener(this);
 		
 		initialize();
     
@@ -122,7 +119,7 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     for (int i = 0; i < GameData.BLOCK_NUM; i++)
       block[i] = new Block(this, images);
     
-    goobler = new Goobler(this);
+    burrakBoss = new Burrak(this);
     
     mirror = new Mirror[GameData.MIRROR_NUM];
     for(int i = 0; i < mirror.length; i++)
@@ -130,6 +127,13 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     
     powerup = new Powerup(this);
     hud = new HUD(this);
+    
+    
+    
+    surface = new GLSurfaceView(this);
+    setContentView(surface);
+    surface.setRenderer(new SpriteBatcher(getResources(), images.getSprites(), this));
+    surface.setOnTouchListener(this);
   }
   
   @Override
@@ -197,11 +201,11 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
 
   private void updateFrameInfo()
   { 
-    hero.update(surface, gamedata, goobler);
-    goobler.update(surface, gamedata, hero, images);
+    hero.update(surface, gamedata, burrakBoss);
+    burrakBoss.update(surface, gamedata, hero, images);
     
-    for(int i = 0; i < goobler.bullets.length; i++)
-      goobler.bullets[i].update(surface, gamedata, sound);
+    for(int i = 0; i < burrakBoss.bullets.length; i++)
+    	burrakBoss.bullets[i].update(surface, gamedata, sound);
  
     for(int i = 0; i < block.length; i++)
       block[i].update(surface, gamedata, hero, sound);
@@ -220,10 +224,10 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
   {
     background.draw(gl, spriteBatcher, surface, gamedata, hero);
     hero.draw(gl, spriteBatcher);
-    goobler.draw(gl, spriteBatcher);
+    burrakBoss.draw(gl, spriteBatcher);
     
-    for(int i = 0; i < goobler.bullets.length; i++)
-      goobler.bullets[i].draw(gl, spriteBatcher);
+    for(int i = 0; i < burrakBoss.bullets.length; i++)
+    	burrakBoss.bullets[i].draw(gl, spriteBatcher);
     
     for(int i = 0; i < block.length; i++)
       block[i].draw(gl, spriteBatcher);

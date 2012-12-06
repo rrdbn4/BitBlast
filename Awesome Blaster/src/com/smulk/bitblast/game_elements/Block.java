@@ -1,4 +1,4 @@
-package com.smulk.bitblast.gameElements;
+package com.smulk.bitblast.game_elements;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -21,26 +21,15 @@ public class Block extends BaseMob
 {
   protected boolean beenHit;
   
-  private int color = 0;
+  private int color = -1;
+  
   protected int damage = 1;
+  protected int defaultDamage;
+  
   protected int pointMultiplier = 10;
   protected int pointValue;
   
-  private final int colors[] = 
-  {
-    Color.BLUE,
-    Color.CYAN,
-    Color.GREEN,
-    Color.MAGENTA,
-    Color.RED,
-    Color.WHITE,
-    Color.YELLOW,
-    //Color.DKGRAY
-  };
-  
-  //private boolean beenHit;
-  
-  public Shrapnel shrapnel;
+  protected Shrapnel shrapnel;
   
   public Block(Context context, Images images)
   { 
@@ -50,6 +39,8 @@ public class Block extends BaseMob
     image = BitmapFactory.decodeResource(context.getResources(), imageID);
     setDimensions(image.getHeight()/spriteSheetHeight, image.getWidth()/spriteSheetWidth);
     shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, color);
+    
+    defaultDamage = 1;
     //src = new Rect(srcX, srcY, width + srcX, height + srcY);
     
     //shrapnel = new Shrapnel(GameData.leContext);
@@ -61,7 +52,9 @@ public class Block extends BaseMob
   
   public void resetBlock()
   {
-    color = colors[rand.nextInt(colors.length)];
+  	resetMob();
+  	damage = defaultDamage;
+    color = GameData.blockColors[rand.nextInt(GameData.blockColors.length)];
     
     switch(color)
     {
@@ -107,11 +100,13 @@ public class Block extends BaseMob
         health = 1;
         pointValue = health * pointMultiplier;
         break;
+      default:
+      	Log.d("resetBlock(), Block.java", "Color not found.");
+      	break;
     }
     
     beenHit = false;
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
-    resetMob();
   }
   
   public void damageBlock(GameData gamedata, Hero hero, int p, Sound sound)

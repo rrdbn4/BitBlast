@@ -1,4 +1,4 @@
-package com.smulk.bitblast.gameElements;
+package com.smulk.bitblast.game_elements;
 
 import javax.microedition.khronos.opengles.GL10;
 

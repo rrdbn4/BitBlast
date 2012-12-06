@@ -9,7 +9,7 @@ import android.graphics.Color;
 import com.smulk.bitblast.R;
 import com.smulk.bitblast.graphics.Images;
 import com.smulk.bitblast.graphics.Shrapnel;
-import com.smulk.bitblast.gameElements.Hero;
+import com.smulk.bitblast.game_elements.Hero;
 import com.smulk.bitblast.utils.BBButton;
 
 public class GameData
@@ -55,6 +55,18 @@ public class GameData
     "Goobler",
     "Invincuble",
     "Break Mirrors"
+  };
+  
+  public final static int blockColors[] = 
+  {
+    Color.BLUE,
+    Color.CYAN,
+    Color.GREEN,
+    Color.MAGENTA,
+    Color.RED,
+    Color.WHITE,
+    Color.YELLOW,
+    //Color.DKGRAY
   };
   
   private PowerupType state;

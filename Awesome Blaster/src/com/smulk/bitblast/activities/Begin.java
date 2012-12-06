@@ -30,7 +30,7 @@ import com.smulk.bitblast.R;
 import com.smulk.bitblast.BitBlast;
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PrefKeys;
-import com.smulk.bitblast.gameElements.Bullet;
+import com.smulk.bitblast.game_elements.Bullet;
 import com.smulk.bitblast.graphics.Shrapnel;
 import com.smulk.bitblast.utils.BBButton;
 

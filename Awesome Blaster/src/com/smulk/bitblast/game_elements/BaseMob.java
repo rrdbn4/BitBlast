@@ -1,4 +1,4 @@
-package com.smulk.bitblast.gameElements;
+package com.smulk.bitblast.game_elements;
 
 public class BaseMob extends BaseSprite
 {
@@ -25,8 +25,9 @@ public class BaseMob extends BaseSprite
   
   public void resetMob()
   {
+  	baseReset();
     isMoving = false;
-    baseReset();
+    health = 0;
   }
   
   public void setSpawnChance(int value)

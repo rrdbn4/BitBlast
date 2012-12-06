@@ -1,6 +1,4 @@
-package com.smulk.bitblast.gameElements;
-
-//TODO: Use rectangle size to store height and width
+package com.smulk.bitblast.game_elements;
 
 import java.util.Random;
 
@@ -19,8 +17,8 @@ public class BaseSprite
   protected Random rand = new Random();
   
   //image information
-  protected int height;
-  protected int width;
+  protected int height = 0;
+  protected int width = 0;
   protected Rect src = new Rect();
   protected Bitmap image = null;
   protected int imageID = 0;

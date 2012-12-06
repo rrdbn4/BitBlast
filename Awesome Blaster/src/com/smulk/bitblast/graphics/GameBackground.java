@@ -8,7 +8,7 @@ import android.opengl.GLSurfaceView;
 import android.util.Log;
 
 import com.smulk.bitblast.data.GameData;
-import com.smulk.bitblast.gameElements.Hero;
+import com.smulk.bitblast.game_elements.Hero;
 
 public class GameBackground
 {

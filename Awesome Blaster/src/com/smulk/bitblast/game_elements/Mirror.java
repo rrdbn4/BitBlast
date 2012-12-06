@@ -1,4 +1,4 @@
-package com.smulk.bitblast.gameElements;
+package com.smulk.bitblast.game_elements;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -29,15 +29,15 @@ public class Mirror extends Block
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
     
     shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, Color.DKGRAY);
-   
-    damage = 1;
-    //resetBlock();
     
+    defaultDamage = 1;
     setSpawnChance(800);
+    resetMirror();
   }
   
   private void resetMirror()
   {
+  	damage = 1;
     beenHit = false;
     resetMob();
   }
@@ -45,7 +45,6 @@ public class Mirror extends Block
   public void update(GLSurfaceView surface, GameData gamedata, Hero hero)
   {
     {
-      
       if(!isMoving())
       {     
         //add mirror

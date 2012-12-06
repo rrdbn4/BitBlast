@@ -10,7 +10,7 @@ import android.graphics.Rect;
 import android.util.Log;
 
 import com.smulk.bitblast.R;
-import com.smulk.bitblast.gameElements.BaseSprite;
+import com.smulk.bitblast.game_elements.BaseSprite;
 
 public class Shrapnel extends BaseSprite
 {

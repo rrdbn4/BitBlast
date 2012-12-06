@@ -1,4 +1,4 @@
-package com.smulk.bitblast.gameElements;
+package com.smulk.bitblast.game_elements;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -15,6 +15,7 @@ import com.smulk.bitblast.R;
 import com.smulk.bitblast.activities.DeathScreen;
 import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PowerupType;
+import com.smulk.bitblast.game_elements.bosses.Burrak;
 import com.smulk.bitblast.graphics.Images;
 import com.smulk.bitblast.graphics.SpriteBatcher;
 
@@ -74,7 +75,7 @@ public class Hero extends BaseMob
       if(!bullets[i].isMoving())
       {
         bullets[i].shoot();
-        bullets[i].setmY(mY + bullets[i].getSpeed()); // + speed so next frame it starts just above ship
+        bullets[i].setmY(mY + bullets[i].getSpeed()); // + speed so next frame it starts just above ship instead of on ship
         bullets[i].setmX(mX + (width/2));
         i = bullets.length;
       }
@@ -137,7 +138,7 @@ public class Hero extends BaseMob
     }
   }
   
-  public void update(GLSurfaceView surface, GameData gamedata, Goobler goobler)
+  public void update(GLSurfaceView surface, GameData gamedata, Burrak burrakBoss)
   {
     //position based on accelerometer
     if (((shipPosition - (change * 5)) > 0) && (shipPosition - (change * 5)) < (surface.getWidth() - getWidth()))
@@ -170,17 +171,33 @@ public class Hero extends BaseMob
     setmY ((surface.getHeight() / 4) * 3);
     setmX (((int) shipPosition));
     
-    for (int i = 0; i < goobler.bullets.length; i++)
+    if(burrakBoss.isMoving())
     {
-      if(goobler.bullets[i].isMoving())
-      {
-        if (hit(goobler.bullets[i]))
-        {
-          damageShip(gamedata, goobler.bullets[i].getDamage());
-          goobler.bullets[i].resetBullet();
-        }
-      }
+	    for (int i = 0; i < burrakBoss.bullets.length; i++)
+	    {
+	      if(burrakBoss.bullets[i].isMoving())
+	      {
+	        if (hit(burrakBoss.bullets[i]))
+	        {
+	          damageShip(gamedata, burrakBoss.bullets[i].getDamage());
+	          burrakBoss.bullets[i].resetBullet();
+	        }
+	      }
+	    }
     }
+    
+    for(int i = 0; i < bullets.length; i++)
+    {
+    	if(bullets[i].isMoving())
+    	{
+    		if(hit(bullets[i]))
+    		{
+    			damageShip(gamedata, bullets[i].getDamage());
+    			bullets[i].resetBullet();
+    		}
+    	}
+    }
+    
   }
   
   public void draw(GL10 gl, SpriteBatcher spriteBatcher)

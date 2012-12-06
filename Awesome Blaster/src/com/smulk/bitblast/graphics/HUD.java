@@ -14,7 +14,7 @@ import android.opengl.GLSurfaceView;
 
 import com.smulk.bitblast.R;
 import com.smulk.bitblast.data.GameData;
-import com.smulk.bitblast.gameElements.Hero;
+import com.smulk.bitblast.game_elements.Hero;
 
 public class HUD
 {
