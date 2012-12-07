@@ -74,21 +74,21 @@ public class Powerup extends BaseObject
 
     switch (type)
     {
-    case FREEZE_BLOCKS:
-      imageID = R.drawable.ice_powerup;
-      break;
-    case GOOBLER:
-      imageID = R.drawable.goobler_powerup;
-      break;
-    case INVINCIBLE:
-      imageID = R.drawable.invincability_powerup;
-      break;
-    case BREAK_MIRRORS:
-      imageID = R.drawable.mirror_break_powerup;
-      break;
-    default:
-      Log.d("setRandomType() Powerup.java", "Powerup imageID undefined");
-      break;
+      case FREEZE_BLOCKS:
+        imageID = R.drawable.ice_powerup;
+        break;
+      case GOOBLER:
+        imageID = R.drawable.goobler_powerup;
+        break;
+      case INVINCIBLE:
+        imageID = R.drawable.invincability_powerup;
+        break;
+      case BREAK_MIRRORS:
+        imageID = R.drawable.mirror_break_powerup;
+        break;
+      default:
+        Log.d("setRandomType() Powerup.java", "Powerup imageID undefined");
+        break;
     }
   }
 
@@ -96,21 +96,21 @@ public class Powerup extends BaseObject
   {
     switch (type)
     {
-    case FREEZE_BLOCKS:
-      // gamedata.setState(PowerupType.FREEZE_BLOCKS);
-      break;
-    case GOOBLER:
-      // gamedata.setState(PowerupType.GOOBLER);
-      break;
-    case INVINCIBLE:
-      // hero.setState(PowerupType.INVINCIBLE);
-      break;
-    case BREAK_MIRRORS:
-      // hero.setState(PowerupType.BREAK_MIRRORS);
-      break;
-    default:
-      Log.d("powerupSelector(), Powerup.java", "Powerup undefined.");
-      break;
+      case FREEZE_BLOCKS:
+        // gamedata.setState(PowerupType.FREEZE_BLOCKS);
+        break;
+      case GOOBLER:
+        // gamedata.setState(PowerupType.GOOBLER);
+        break;
+      case INVINCIBLE:
+        // hero.setState(PowerupType.INVINCIBLE);
+        break;
+      case BREAK_MIRRORS:
+        // hero.setState(PowerupType.BREAK_MIRRORS);
+        break;
+      default:
+        Log.d("powerupSelector(), Powerup.java", "Powerup undefined.");
+        break;
     }
 
     if (gamedata.getState() == PowerupType.FREEZE_BLOCKS
@@ -153,7 +153,8 @@ public class Powerup extends BaseObject
           resetPowerup();
         }
       }
-    } else
+    }
+    else
     {
       if (spawn() && gamedata.getState() != PowerupType.FREEZE_BLOCKS)
       {

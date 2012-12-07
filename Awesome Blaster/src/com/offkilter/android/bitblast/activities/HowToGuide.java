@@ -15,7 +15,6 @@ import android.widget.Button;
 import com.offkilter.android.bitblast.data.PrefKeys;
 import com.offkilter.android.bitblast.R;
 
-
 public class HowToGuide extends Activity implements OnClickListener
 {
   MediaPlayer mp = null;

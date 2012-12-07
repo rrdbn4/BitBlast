@@ -34,7 +34,6 @@ import com.offkilter.android.bitblast.graphics.SpriteBatcher;
 import com.offkilter.android.bitblast.utils.BBButton;
 import com.offkilter.android.bitblast.R;
 
-
 public class Begin extends Activity implements OnTouchListener
 {
   ArtWork view;
@@ -124,19 +123,23 @@ public class Begin extends Activity implements OnTouchListener
       {
         startActivity(new Intent(this, BitBlast.class));
         finish();
-      } else if (BBOptions.isClicked(event.getX(), event.getY()))
+      }
+      else if (BBOptions.isClicked(event.getX(), event.getY()))
       {
         startActivity(new Intent(this, Options.class));
-      } else if (BBFeedback.isClicked(event.getX(), event.getY()))
+      }
+      else if (BBFeedback.isClicked(event.getX(), event.getY()))
       {
         startActivity(new Intent(this, Feedback.class));
-      } else if (BBURL.isClicked(event.getX(), event.getY()))
+      }
+      else if (BBURL.isClicked(event.getX(), event.getY()))
       {
         String url = "http://www.dunnrightsoftware.com";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
-      } else if (BBHowTo.isClicked(event.getX(), event.getY()))
+      }
+      else if (BBHowTo.isClicked(event.getX(), event.getY()))
       {
         startActivity(new Intent(this, HowToGuide.class));
       }
@@ -240,7 +243,8 @@ public class Begin extends Activity implements OnTouchListener
       try
       {
         thread.join();
-      } catch (InterruptedException e)
+      }
+      catch (InterruptedException e)
       {
         e.printStackTrace();
       }
@@ -304,7 +308,8 @@ public class Begin extends Activity implements OnTouchListener
               canvas.drawBitmap(bullet, bullets[i].getmX(), bullets[i].getmY(),
                   null);
             }
-          } else
+          }
+          else
           {
             if (counter > 20)
             {

@@ -30,7 +30,6 @@ import com.offkilter.android.bitblast.graphics.Shrapnel;
 import com.offkilter.android.bitblast.utils.BBButton;
 import com.offkilter.android.bitblast.R;
 
-
 public class DeathScreen extends Activity implements OnTouchListener,
     OnCompletionListener
 {
@@ -78,7 +77,8 @@ public class DeathScreen extends Activity implements OnTouchListener,
       MediaPlayer mp = MediaPlayer.create(this, R.raw.tada);
       mp.start();
       mp.setOnCompletionListener(this);
-    } else if (playMusic)
+    }
+    else if (playMusic)
     {
       MediaPlayer mp = MediaPlayer.create(this, R.raw.wawa);
       mp.start();
@@ -151,7 +151,8 @@ public class DeathScreen extends Activity implements OnTouchListener,
       {
         startActivity(new Intent(this, Begin.class));
         finish();
-      } else if (bbChangeName.isClicked(event.getX(), event.getY()))
+      }
+      else if (bbChangeName.isClicked(event.getX(), event.getY()))
       {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         final View view = View.inflate(this, R.layout.name_entry, null);
@@ -259,7 +260,8 @@ public class DeathScreen extends Activity implements OnTouchListener,
             canvas.drawBitmap(bullet, bullets[i].getmX(), bullets[i].getmY(),
                 null);
           }
-        } else
+        }
+        else
         {
           if (counter2 > 50)
           {
@@ -298,7 +300,8 @@ public class DeathScreen extends Activity implements OnTouchListener,
         bbChangeName.create(0, canvas.getWidth(),
             getHeight() / 2 - (int) paint.getTextSize() * 3, getHeight() / 2
                 + (int) paint.getTextSize() * 3);
-      } else
+      }
+      else
       {
         canvas.drawText("HighScore to beat: " + highScore,
             canvas.getWidth() / 2, getHeight() / 2, paint);

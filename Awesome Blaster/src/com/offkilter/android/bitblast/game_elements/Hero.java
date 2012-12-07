@@ -154,12 +154,14 @@ public class Hero extends BaseMob
       {
         srcX = 0 * width;
         srcY = 1 * height;
-      } else if (change < 0)
+      }
+      else if (change < 0)
       {
         srcX = 1 * width;
         srcY = 1 * height;
       }
-    } else
+    }
+    else
     {
       srcX = 0 * width;
       srcY = 0 * height;

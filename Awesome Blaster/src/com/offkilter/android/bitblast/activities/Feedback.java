@@ -14,7 +14,6 @@ import android.widget.EditText;
 import com.offkilter.android.bitblast.data.PrefKeys;
 import com.offkilter.android.bitblast.R;
 
-
 public class Feedback extends Activity implements OnClickListener
 {
   Button send;
@@ -49,8 +48,8 @@ public class Feedback extends Activity implements OnClickListener
   {
     Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
     emailIntent.setType("plain/text");
-    emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
-        new String[] { EMAIL_ADDRESS });
+    emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]
+    { EMAIL_ADDRESS });
     emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
         "BitBlast Contact: " + subject.getText().toString());
     emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, message.getText()

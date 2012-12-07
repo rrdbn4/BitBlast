@@ -185,11 +185,13 @@ public class BitBlast extends Activity implements SensorEventListener,
         if (gamedata.getIsRunning())
         {
           // view.pause();
-        } else
+        }
+        else
         {
           // view.resume();
         }
-      } else
+      }
+      else
         hero.shoot();
     }
     return true;

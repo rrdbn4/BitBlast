@@ -20,7 +20,6 @@ import com.offkilter.android.bitblast.data.PrefKeys;
 import com.offkilter.android.bitblast.utils.BBButton;
 import com.offkilter.android.bitblast.R;
 
-
 public class Options extends Activity implements OnTouchListener
 {
   ViewField view;
@@ -63,13 +62,15 @@ public class Options extends Activity implements OnTouchListener
         editor.putBoolean(PrefKeys.PREFS_MUSIC_ENABLED_KEY,
             !prefs.getBoolean(PrefKeys.PREFS_MUSIC_ENABLED_KEY, true));
         editor.commit();
-      } else if (soundSwitch.isClicked(x, y))
+      }
+      else if (soundSwitch.isClicked(x, y))
       {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean(PrefKeys.PREFS_SOUND_FX_ENABLED_KEY,
             !prefs.getBoolean(PrefKeys.PREFS_SOUND_FX_ENABLED_KEY, true));
         editor.commit();
-      } else if (statusbarSwitch.isClicked(x, y))
+      }
+      else if (statusbarSwitch.isClicked(x, y))
       {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean(PrefKeys.PREFS_STATUSBAR_ENABLED_KEY,
@@ -81,7 +82,8 @@ public class Options extends Activity implements OnTouchListener
           getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
               WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
-      } else if (backButton.isClicked(x, y))
+      }
+      else if (backButton.isClicked(x, y))
       {
         finish();
       }

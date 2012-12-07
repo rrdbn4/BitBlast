@@ -65,51 +65,51 @@ public class Block extends BaseMob
 
     switch (color)
     {
-    case Color.BLUE:
-      srcX = 0 * width;
-      srcY = 0 * height;
-      health = 7;
-      pointValue = health * pointMultiplier;
-      break;
-    case Color.CYAN:
-      srcX = 1 * width;
-      srcY = 0 * height;
-      health = 6;
-      pointValue = health * pointMultiplier;
-      break;
-    case Color.GREEN:
-      srcX = 2 * width;
-      srcY = 0 * height;
-      health = 5;
-      pointValue = health * pointMultiplier;
-      break;
-    case Color.MAGENTA:
-      srcX = 3 * width;
-      srcY = 0 * height;
-      health = 4;
-      pointValue = health * pointMultiplier;
-      break;
-    case Color.RED:
-      srcX = 0 * width;
-      srcY = 1 * height;
-      health = 3;
-      pointValue = health * pointMultiplier;
-      break;
-    case Color.WHITE:
-      srcX = 1 * width;
-      srcY = 1 * height;
-      health = 2;
-      pointValue = health * pointMultiplier;
-      break;
-    case Color.YELLOW:
-      srcX = 2 * width;
-      srcY = 1 * height;
-      health = 1;
-      pointValue = health * pointMultiplier;
-      break;
-    default:
-      Log.d("resetBlock(), Block.java", "Color not found.");
-      break;
+      case Color.BLUE:
+        srcX = 0 * width;
+        srcY = 0 * height;
+        health = 7;
+        pointValue = health * pointMultiplier;
+        break;
+      case Color.CYAN:
+        srcX = 1 * width;
+        srcY = 0 * height;
+        health = 6;
+        pointValue = health * pointMultiplier;
+        break;
+      case Color.GREEN:
+        srcX = 2 * width;
+        srcY = 0 * height;
+        health = 5;
+        pointValue = health * pointMultiplier;
+        break;
+      case Color.MAGENTA:
+        srcX = 3 * width;
+        srcY = 0 * height;
+        health = 4;
+        pointValue = health * pointMultiplier;
+        break;
+      case Color.RED:
+        srcX = 0 * width;
+        srcY = 1 * height;
+        health = 3;
+        pointValue = health * pointMultiplier;
+        break;
+      case Color.WHITE:
+        srcX = 1 * width;
+        srcY = 1 * height;
+        health = 2;
+        pointValue = health * pointMultiplier;
+        break;
+      case Color.YELLOW:
+        srcX = 2 * width;
+        srcY = 1 * height;
+        health = 1;
+        pointValue = health * pointMultiplier;
+        break;
+      default:
+        Log.d("resetBlock(), Block.java", "Color not found.");
+        break;
     }
 
     beenHit = false;
@@ -143,11 +143,13 @@ public class Block extends BaseMob
       if (mY == 0)
       {
         mY = 1;
-      } else if (mY >= surface.getHeight())
+      }
+      else if (mY >= surface.getHeight())
       {
         // Log.d("Block.java", "Reset called");
         resetBlock();
-      } else
+      }
+      else
       {
         if (gamedata.getState() != PowerupType.FREEZE_BLOCKS)
           mY += speed;
@@ -176,7 +178,8 @@ public class Block extends BaseMob
           }
         }
       }
-    } else
+    }
+    else
     // if it isn't moving
     {
       if (spawn() && !gamedata.getBlockFreeze()

@@ -49,11 +49,12 @@ public class GameData
   public static final int BLOCK_SPEED = 4;
   public static final int POWERUP_SPEED = 6;
 
-  public static final String powerupNames[] = { "Freeze Blocks", "Goobler",
-      "Invincuble", "Break Mirrors" };
+  public static final String powerupNames[] =
+  { "Freeze Blocks", "Goobler", "Invincuble", "Break Mirrors" };
 
-  public final static int blockColors[] = { Color.BLUE, Color.CYAN,
-      Color.GREEN, Color.MAGENTA, Color.RED, Color.WHITE, Color.YELLOW,
+  public final static int blockColors[] =
+  { Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.RED, Color.WHITE,
+      Color.YELLOW,
   // Color.DKGRAY
   };
 

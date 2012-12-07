@@ -23,228 +23,229 @@ public class Burrak extends BaseMob
 {
   private final int MAX_HEALTH = 20;
   private final int SHOOT_CHANCE = 100;
-  
+
   private boolean isMovingRandomly;
-  private boolean goingDown;  
+  private boolean goingDown;
   private boolean goingLeft;
   private boolean isMad = false;
   private boolean showRed = false;
-  
+
   public Bullet bullets[];
-  
+
   private int madCounter = 0;
-  
+
   public Burrak(Context context)
   {
     imageID = R.drawable.goobler;
     image = BitmapFactory.decodeResource(context.getResources(), imageID);
     setDimensions(image.getHeight(), image.getWidth());
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
-    
+
     setSpawnChance(4000);
-    
+
     bullets = new Bullet[GameData.GOOBLER_BULLET_NUM];
     for (int i = 0; i < bullets.length; i++)
       bullets[i] = new Bullet(context, GameData.GOOBLER_BULLET_SPEED, 2);
-    
+
     resetGoobler();
   }
-  
+
   public void setShowRed(Boolean value)
   {
     showRed = value;
   }
-  
+
   public boolean getShowRed()
   {
     return showRed;
   }
-  
+
   public void resetGoobler()
   {
     resetMob();
     health = MAX_HEALTH;
-    isMad  = showRed = isMovingRandomly = goingLeft = goingDown = false;
+    isMad = showRed = isMovingRandomly = goingLeft = goingDown = false;
   }
-  
+
   public void takeDamage(int amount)
   {
     health -= amount;
-    if(health <= 0)
+    if (health <= 0)
       resetGoobler();
   }
-  
+
   private boolean shootChance()
   {
     return rand.nextInt(SHOOT_CHANCE) == 1;
   }
-  
-  private void moveTowardsShip(GLSurfaceView surface, final int speed, final Hero hero, Bitmap picture)
+
+  private void moveTowardsShip(GLSurfaceView surface, final int speed,
+      final Hero hero, Bitmap picture)
   {
-    int target_middle = hero.getmX() + (hero.getWidth()/2);
-    int this_middle = mX + (getWidth()/2);
-    
-    if(shootChance())
+    int target_middle = hero.getmX() + (hero.getWidth() / 2);
+    int this_middle = mX + (getWidth() / 2);
+
+    if (shootChance())
     {
-      for(int i = 0; i < bullets.length; i++)
+      for (int i = 0; i < bullets.length; i++)
       {
-        if(!bullets[i].isMoving())
+        if (!bullets[i].isMoving())
         {
           bullets[i].shoot();
           bullets[i].setmY(mY + bullets[i].getSpeed());
-          bullets[i].setmX(mX + (width/2));
+          bullets[i].setmX(mX + (width / 2));
           i = bullets.length;
         }
       }
-      
-      
-      isMovingRandomly = (isMovingRandomly? false : true);
+
+      isMovingRandomly = (isMovingRandomly ? false : true);
     }
-    
-    //left and right movement
-    if(!isMovingRandomly)
+
+    // left and right movement
+    if (!isMovingRandomly)
     {
-      if(target_middle <= this_middle && (mX - speed) > 0)
+      if (target_middle <= this_middle && (mX - speed) > 0)
       {
         mX -= speed;
       }
-      else if(target_middle > this_middle && (mX + getWidth() + speed) < surface.getWidth())
+      else if (target_middle > this_middle
+          && (mX + getWidth() + speed) < surface.getWidth())
       {
         mX += speed;
       }
     }
     else
     {
-      //trigger random decision
-      if(shootChance())
+      // trigger random decision
+      if (shootChance())
       {
-        for(int i = 0; i < bullets.length; i++)
+        for (int i = 0; i < bullets.length; i++)
         {
-          if(!bullets[i].isMoving())
+          if (!bullets[i].isMoving())
           {
             bullets[i].shoot();
             bullets[i].setmY(mY + bullets[i].getSpeed());
-            bullets[i].setmX(mX + (width/2));
+            bullets[i].setmX(mX + (width / 2));
             i = bullets.length;
           }
         }
-        goingLeft = (goingLeft? false: true);
+        goingLeft = (goingLeft ? false : true);
       }
-      
-      
-      if(goingLeft)
-      { 
-        if(mX - speed <= 0)
+
+      if (goingLeft)
+      {
+        if (mX - speed <= 0)
           goingLeft = false;
         else
           mX -= speed;
-      } 
+      }
       else
       {
-        if(mX+ speed + getWidth() >= surface.getWidth())
+        if (mX + speed + getWidth() >= surface.getWidth())
           goingLeft = true;
         else
           mX += speed;
-      } 
+      }
     }
     bounce(speed, hero.getmY());
   }
-  
+
   private void bounce(int speed, int targetY)
   {
     int bottom = mY + getHeight();
-    if(goingDown)
+    if (goingDown)
     {
-      if((bottom + speed) < targetY - 50)
+      if ((bottom + speed) < targetY - 50)
         mY += speed;
       else
         goingDown = false;
     }
     else
     {
-      if((mY - speed) > 50)
+      if ((mY - speed) > 50)
         mY -= speed;
       else
         goingDown = true;
     }
   }
-  
-  public void update(GLSurfaceView surface, GameData gamedata, Hero hero, Images images)
+
+  public void update(GLSurfaceView surface, GameData gamedata, Hero hero,
+      Images images)
   {
-    if(gamedata.getState() != PowerupType.FREEZE_BLOCKS && !isMoving())
-    { 
-      if(gamedata.getState() == PowerupType.GOOBLER)
+    if (gamedata.getState() != PowerupType.FREEZE_BLOCKS && !isMoving())
+    {
+      if (gamedata.getState() == PowerupType.GOOBLER)
       {
         resetGoobler();
         gamedata.setToNormal(0, gamedata, images, hero);
         startMoving();
-        
-        //TODO: Create better way to freeze objects
+
+        // TODO: Create better way to freeze objects
         gamedata.setAllBlockFreeze(true);
       }
-      else if(gamedata.getScore() >= 3000 && spawn())
+      else if (gamedata.getScore() >= 3000 && spawn())
       {
         resetGoobler();
         startMoving();
 
-        //TODO: Create better way to freeze objects
+        // TODO: Create better way to freeze objects
         gamedata.setAllBlockFreeze(true);
       }
-      else if(gamedata.getScore() >= 0 && gamedata.getScore() <= 100)
+      else if (gamedata.getScore() >= 0 && gamedata.getScore() <= 100)
       {
         resetGoobler();
         startMoving();
-        
-        //TODO: Create better way to freeze objects
+
+        // TODO: Create better way to freeze objects
         gamedata.setAllBlockFreeze(true);
       }
-    } 
-    
-    //if spawned then move with this
-    if(isMoving())
+    }
+
+    // if spawned then move with this
+    if (isMoving())
     {
-      if(!isMad)
+      if (!isMad)
         moveTowardsShip(surface, 3, hero, images.getEnemy());
       else
       {
         madCounter++;
-        if(madCounter >= 25)
+        if (madCounter >= 25)
         {
           madCounter = 0;
           isMad = true;
         }
         moveTowardsShip(surface, 3, hero, images.getEnemyMad());
       }
-      
+
       for (int i = 0; i < hero.bullets.length; i++)
       {
-        if(hero.bullets[i].isMoving())
+        if (hero.bullets[i].isMoving())
         {
-          //when block encounters a bullet
+          // when block encounters a bullet
           if (hit(hero.bullets[i]))
           {
             takeDamage(hero.bullets[i].getDamage());
-            
+
             isMad = true;
-            //TODO: Make added point value a constant
+            // TODO: Make added point value a constant
             gamedata.addScore(50);
             hero.bullets[i].resetBullet();
-            
-            if(!isMoving())
+
+            if (!isMoving())
               gamedata.setAllBlockFreeze(false);
           }
         }
       }
-      
+
     }
   }
-  
+
   public void draw(GL10 gl, SpriteBatcher spriteBatcher)
   {
-    if(isMoving())
+    if (isMoving())
     {
       dest = new Rect(mX, mY, mX + width, mY + height);
-      if(isMad)
+      if (isMad)
       {
         imageID = R.drawable.goobler_mad;
         spriteBatcher.draw(gl, imageID, src, dest);

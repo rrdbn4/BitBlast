@@ -58,16 +58,19 @@ public class Mirror extends Block
           setXRandomly(surface.getWidth() - width);
           mY = 0;
         }
-      } else
+      }
+      else
       // if it is moving
       {
         if (mY == 0)
         {
           setmY(1);
-        } else if (mY >= surface.getHeight())
+        }
+        else if (mY >= surface.getHeight())
         {
           resetMirror();
-        } else
+        }
+        else
         // if it is moving normally
         {
           if (gamedata.getState() != PowerupType.FREEZE_BLOCKS)
@@ -86,7 +89,8 @@ public class Mirror extends Block
                 // (height / 2), 7, 7, Color.DKGRAY);
                 resetMirror();
                 hero.bullets[k].resetBullet();
-              } else
+              }
+              else
               {
                 if (!hero.bullets[k].getHitMirror())
                 {

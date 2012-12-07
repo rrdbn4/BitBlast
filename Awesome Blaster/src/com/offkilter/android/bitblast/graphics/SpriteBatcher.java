@@ -390,7 +390,8 @@ public class SpriteBatcher implements Renderer
       {
         // If not empty, find last value
         lastValue = indices.get(indices.size() - 1);
-      } else
+      }
+      else
         lastValue = -1;
       indices.add((short) (lastValue + 1));
       indices.add((short) (lastValue + 2));
@@ -450,7 +451,8 @@ public class SpriteBatcher implements Renderer
       {
         // If not empty, find last value
         lastValue = indices.get(indices.size() - 1);
-      } else
+      }
+      else
         lastValue = -1;
       indices.add((short) (lastValue + 1));
       indices.add((short) (lastValue + 2));
@@ -512,7 +514,8 @@ public class SpriteBatcher implements Renderer
       {
         // If not empty, find last value
         lastValue = indices.get(indices.size() - 1);
-      } else
+      }
+      else
         lastValue = -1;
       indices.add((short) (lastValue + 1));
       indices.add((short) (lastValue + 2));
@@ -565,7 +568,8 @@ public class SpriteBatcher implements Renderer
       if (objectArray == null)
       {
         return null;
-      } else if (objectArray.length == 0)
+      }
+      else if (objectArray.length == 0)
       {
         return null;
       }
@@ -582,7 +586,8 @@ public class SpriteBatcher implements Renderer
       if (objectArray == null)
       {
         return null;
-      } else if (objectArray.length == 0)
+      }
+      else if (objectArray.length == 0)
       {
         return null;
       }
