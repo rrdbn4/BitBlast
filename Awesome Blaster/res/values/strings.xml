@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World, BitBlast!</string>
-    <string name="app_name">Awesome Blaster</string>
+    <string name="app_name">BitBlast</string>
     <string name="feedback_message">Questions? Comments? Suggestions for the game? Tell us anything you want!</string>
     <string name="SKU">premium_upgrade</string>
     <string name="ItemName">Premium Upgrade</string>

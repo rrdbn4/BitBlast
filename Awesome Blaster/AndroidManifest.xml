@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.smulk.bitblast"
+    package="com.offkilter.android.bitblast"
     android:versionCode="11"
     android:versionName="0.0.1" >
 
@@ -19,17 +19,17 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.smulk.bitblast.activities.Begin"
+            android:name="com.offkilter.android.bitblast.activities.Begin"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.smulk.bitblast.activities.DeathScreen"
+            android:name="com.offkilter.android.bitblast.activities.DeathScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.smulk.bitblast.activities.SplashScreen"
+            android:name="com.offkilter.android.bitblast.activities.SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -44,7 +44,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.smulk.bitblast.activities.Feedback"
+            android:name="com.offkilter.android.bitblast.activities.Feedback"
             android:label="Send Feedback"
             android:screenOrientation="portrait" >
         </activity>
@@ -55,7 +55,7 @@
 
         </activity>
         <activity
-            android:name="com.smulk.bitblast.activities.Options"
+            android:name="com.offkilter.android.bitblast.activities.Options"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
   
@@ -67,7 +67,7 @@
   
         </activity>
         <activity
-            android:name="com.smulk.bitblast.activities.HowToGuide"
+            android:name="com.offkilter.android.bitblast.activities.HowToGuide"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
   
