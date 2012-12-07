@@ -54,8 +54,7 @@ import com.offkilter.android.bitblast.graphics.Images;
 import com.offkilter.android.bitblast.graphics.SpriteBatcher;
 import com.offkilter.android.bitblast.sound.Sound;
 
-public class BitBlast extends Activity implements SensorEventListener,
-    OnTouchListener, Drawer
+public class BitBlast extends Activity implements SensorEventListener, OnTouchListener, Drawer
 {
   GLSurfaceView surface;
   SensorManager accel;
@@ -80,10 +79,8 @@ public class BitBlast extends Activity implements SensorEventListener,
     super.onCreate(savedInstanceState);
 
     requestWindowFeature(Window.FEATURE_NO_TITLE);
-    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
-        WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     initialize();
 
@@ -95,21 +92,16 @@ public class BitBlast extends Activity implements SensorEventListener,
     }
     setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-    data = getSharedPreferences(PrefKeys.PREFS_ACCEL_KEY,
-        Context.MODE_WORLD_WRITEABLE);
+    data = getSharedPreferences(PrefKeys.PREFS_ACCEL_KEY, Context.MODE_WORLD_WRITEABLE);
     eventPos = data.getInt(PrefKeys.PREFS_ACCEL_KEY, 0);
 
-    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY,
-        Context.MODE_WORLD_WRITEABLE);
+    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY, Context.MODE_WORLD_WRITEABLE);
     if (!prefs.getBoolean(PrefKeys.PREFS_STATUSBAR_ENABLED_KEY, true))
     {
-      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-          WindowManager.LayoutParams.FLAG_FULLSCREEN);
+      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-    gamedata.setPlaySound((prefs.getBoolean(
-        PrefKeys.PREFS_SOUND_FX_ENABLED_KEY, true)));
-    gamedata.setPlayMusic((prefs.getBoolean(PrefKeys.PREFS_MUSIC_ENABLED_KEY,
-        true)));
+    gamedata.setPlaySound((prefs.getBoolean(PrefKeys.PREFS_SOUND_FX_ENABLED_KEY, true)));
+    gamedata.setPlayMusic((prefs.getBoolean(PrefKeys.PREFS_MUSIC_ENABLED_KEY, true)));
   }
 
   private void initialize()

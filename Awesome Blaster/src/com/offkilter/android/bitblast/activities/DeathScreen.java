@@ -30,8 +30,7 @@ import com.offkilter.android.bitblast.graphics.Shrapnel;
 import com.offkilter.android.bitblast.utils.BBButton;
 import com.offkilter.android.bitblast.R;
 
-public class DeathScreen extends Activity implements OnTouchListener,
-    OnCompletionListener
+public class DeathScreen extends Activity implements OnTouchListener, OnCompletionListener
 {
   ArtWork view;
   private int endingScore;
@@ -53,8 +52,7 @@ public class DeathScreen extends Activity implements OnTouchListener,
     view.setOnTouchListener(this);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     setContentView(view);
-    highScoreData = getSharedPreferences(PrefKeys.HIGH_SCORE_FILE_KEY,
-        Context.MODE_WORLD_READABLE);
+    highScoreData = getSharedPreferences(PrefKeys.HIGH_SCORE_FILE_KEY, Context.MODE_WORLD_READABLE);
 
     Bundle extras = getIntent().getExtras();
     endingScore = extras.getInt(GameData.getScoreKey());
@@ -68,8 +66,7 @@ public class DeathScreen extends Activity implements OnTouchListener,
       editor.commit();
     }
 
-    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY,
-        Context.MODE_WORLD_WRITEABLE);
+    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY, Context.MODE_WORLD_WRITEABLE);
     playMusic = prefs.getBoolean(PrefKeys.PREFS_MUSIC_ENABLED_KEY, true);
 
     if (isHighScore && playMusic)
@@ -87,8 +84,7 @@ public class DeathScreen extends Activity implements OnTouchListener,
 
     if (!prefs.getBoolean(PrefKeys.PREFS_STATUSBAR_ENABLED_KEY, true))
     {
-      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-          WindowManager.LayoutParams.FLAG_FULLSCREEN);
+      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
   }
 
@@ -164,11 +160,9 @@ public class DeathScreen extends Activity implements OnTouchListener,
               @Override
               public void onClick(DialogInterface dialog, int which)
               {
-                SharedPreferences data = getSharedPreferences(
-                    PrefKeys.HIGH_SCORE_FILE_KEY, Context.MODE_WORLD_READABLE);
+                SharedPreferences data = getSharedPreferences(PrefKeys.HIGH_SCORE_FILE_KEY, Context.MODE_WORLD_READABLE);
                 SharedPreferences.Editor editor = data.edit();
-                editor.putString(PrefKeys.HIGH_SCORE_NAME_KEY, name.getText()
-                    .toString());
+                editor.putString(PrefKeys.HIGH_SCORE_NAME_KEY, name.getText().toString());
                 editor.commit();
               }
             });
@@ -197,8 +191,7 @@ public class DeathScreen extends Activity implements OnTouchListener,
     private int counter2 = 0;
     private boolean countingDown, firstRun = true;
     private Bitmap ship, enemy, bullet;
-    private Bitmap continueBut = BitmapFactory.decodeResource(getResources(),
-        R.drawable.continue_button);
+    private Bitmap continueBut = BitmapFactory.decodeResource(getResources(), R.drawable.continue_button);
     private Burrak burrakBoss;
     // private Shrapnel blasts[];
     private Bullet bullets[];
@@ -220,8 +213,7 @@ public class DeathScreen extends Activity implements OnTouchListener,
 
       burrakBoss = new Burrak(GameData.leContext);
       ship = BitmapFactory.decodeResource(getResources(), R.drawable.ship);
-      enemy = BitmapFactory.decodeResource(getResources(),
-          R.drawable.goobler_mad);
+      enemy = BitmapFactory.decodeResource(getResources(), R.drawable.goobler_mad);
       bullet = BitmapFactory.decodeResource(getResources(), R.drawable.bullet);
     }
 
@@ -230,8 +222,7 @@ public class DeathScreen extends Activity implements OnTouchListener,
     {
       if (firstRun)
       {
-        bbcontinue.create(canvas.getWidth() - continueBut.getWidth(),
-            getHeight() - continueBut.getHeight(), continueBut);
+        bbcontinue.create(canvas.getWidth() - continueBut.getWidth(), getHeight() - continueBut.getHeight(), continueBut);
         firstRun = false;
       }
       counter2++;
@@ -285,46 +276,31 @@ public class DeathScreen extends Activity implements OnTouchListener,
          * + 100, getHeight()/2, 10, 10); }
          */
 
-        canvas.drawText("NEW HIGHSCORE!", canvas.getWidth() / 2,
-            getHeight() / 2, paint);
-        canvas.drawText(
-            "by: "
-                + highScoreData.getString(PrefKeys.HIGH_SCORE_NAME_KEY,
-                    "Enter Name"), canvas.getWidth() / 2, getHeight() / 2
-                + paint.getTextSize(), paint);
+        canvas.drawText("NEW HIGHSCORE!", canvas.getWidth() / 2,getHeight() / 2, paint);
+        canvas.drawText("by: " + highScoreData.getString(PrefKeys.HIGH_SCORE_NAME_KEY, "Enter Name"), 
+                        canvas.getWidth() / 2, getHeight() / 2 + paint.getTextSize(), paint);
         paint.setTextSize(20);
-        canvas.drawText("(Tap to change)", canvas.getWidth() / 2, getHeight()
-            / 2 + paint.getTextSize() * 5, paint);
+        canvas.drawText("(Tap to change)", canvas.getWidth() / 2, getHeight() / 2 + paint.getTextSize() * 5, paint);
         paint.setTextSize(50);
 
-        bbChangeName.create(0, canvas.getWidth(),
-            getHeight() / 2 - (int) paint.getTextSize() * 3, getHeight() / 2
-                + (int) paint.getTextSize() * 3);
+        bbChangeName.create(0, canvas.getWidth(), getHeight() / 2 - (int) paint.getTextSize() * 3, 
+                            getHeight() / 2 + (int) paint.getTextSize() * 3);
       }
       else
       {
-        canvas.drawText("HighScore to beat: " + highScore,
-            canvas.getWidth() / 2, getHeight() / 2, paint);
-        canvas.drawText(
-            "Set By: "
-                + highScoreData.getString(PrefKeys.HIGH_SCORE_NAME_KEY,
-                    "Nobody"), canvas.getWidth() / 2,
-            getHeight() / 2 + paint.getTextSize(), paint);
+        canvas.drawText("HighScore to beat: " + highScore, canvas.getWidth() / 2, getHeight() / 2, paint);
+        canvas.drawText("Set By: " + highScoreData.getString(PrefKeys.HIGH_SCORE_NAME_KEY, "Nobody"), canvas.getWidth() / 2, 
+                        getHeight() / 2 + paint.getTextSize(), paint);
       }
 
       burrakBoss.setmX((canvas.getWidth() / 2) - (enemy.getWidth() / 2));
       // TODO: Uncomment when implemented properly
       // goobler.bounce(canvas, enemy, 3, (int)(getHeight()*0.7),
       // (int)(getHeight()*0.1));
-      canvas.drawBitmap(ship, (canvas.getWidth() / 2) - (ship.getWidth() / 2),
-          getHeight() - ship.getHeight() - 10, null);
-      canvas.drawText("YOU DIED", canvas.getWidth() / 2, paint.getTextSize(),
-          paint);
-      canvas.drawText("Final Score: " + endingScore, canvas.getWidth() / 2,
-          paint.getTextSize() * 2, paint);
-      canvas.drawBitmap(continueBut,
-          canvas.getWidth() - continueBut.getWidth(),
-          getHeight() - continueBut.getHeight(), null);
+      canvas.drawBitmap(ship, (canvas.getWidth() / 2) - (ship.getWidth() / 2), getHeight() - ship.getHeight() - 10, null);
+      canvas.drawText("YOU DIED", canvas.getWidth() / 2, paint.getTextSize(), paint);
+      canvas.drawText("Final Score: " + endingScore, canvas.getWidth() / 2, paint.getTextSize() * 2, paint);
+      canvas.drawBitmap(continueBut, canvas.getWidth() - continueBut.getWidth(), getHeight() - continueBut.getHeight(), null);
 
       invalidate();
     }

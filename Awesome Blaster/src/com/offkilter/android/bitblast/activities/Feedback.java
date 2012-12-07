@@ -48,12 +48,9 @@ public class Feedback extends Activity implements OnClickListener
   {
     Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
     emailIntent.setType("plain/text");
-    emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]
-    { EMAIL_ADDRESS });
-    emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-        "BitBlast Contact: " + subject.getText().toString());
-    emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, message.getText()
-        .toString() + "\n--\n" + email.getText().toString());
+    emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { EMAIL_ADDRESS });
+    emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "BitBlast Contact: " + subject.getText().toString());
+    emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, message.getText().toString() + "\n--\n" + email.getText().toString());
 
     startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     finish();

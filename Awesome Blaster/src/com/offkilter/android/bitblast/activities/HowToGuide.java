@@ -31,12 +31,10 @@ public class HowToGuide extends Activity implements OnClickListener
     bReturn = (Button) findViewById(R.id.bReturnToMenu);
     bReturn.setOnClickListener(this);
 
-    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY,
-        Context.MODE_WORLD_WRITEABLE);
+    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY, Context.MODE_WORLD_WRITEABLE);
     if (!prefs.getBoolean(PrefKeys.PREFS_STATUSBAR_ENABLED_KEY, true))
     {
-      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-          WindowManager.LayoutParams.FLAG_FULLSCREEN);
+      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     playSound = prefs.getBoolean(PrefKeys.PREFS_MUSIC_ENABLED_KEY, true);

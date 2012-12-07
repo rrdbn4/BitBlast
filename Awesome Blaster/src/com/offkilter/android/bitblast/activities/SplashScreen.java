@@ -22,12 +22,10 @@ public class SplashScreen extends Activity
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     setContentView(R.layout.splash);
 
-    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY,
-        Context.MODE_WORLD_WRITEABLE);
+    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY, Context.MODE_WORLD_WRITEABLE);
     if (!prefs.getBoolean(PrefKeys.PREFS_STATUSBAR_ENABLED_KEY, true))
     {
-      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-          WindowManager.LayoutParams.FLAG_FULLSCREEN);
+      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     Thread thread = new Thread()
@@ -39,10 +37,8 @@ public class SplashScreen extends Activity
          * try { sleep(3000); } catch (InterruptedException e) {
          * e.printStackTrace(); }
          */
-        data = getSharedPreferences(PrefKeys.FIRST_RUN_FILE_KEY,
-            Context.MODE_PRIVATE);
-        boolean beenRanBefore = data.getBoolean(PrefKeys.FIRST_RUN_AXIS_KEY,
-            false);
+        data = getSharedPreferences(PrefKeys.FIRST_RUN_FILE_KEY, Context.MODE_PRIVATE);
+        boolean beenRanBefore = data.getBoolean(PrefKeys.FIRST_RUN_AXIS_KEY, false);
 
         if (beenRanBefore)
         {

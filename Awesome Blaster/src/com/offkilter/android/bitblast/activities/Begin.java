@@ -59,17 +59,14 @@ public class Begin extends Activity implements OnTouchListener
     BBURL = new BBButton();
     BBHowTo = new BBButton();
 
-    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY,
-        Context.MODE_WORLD_WRITEABLE);
+    SharedPreferences prefs = getSharedPreferences(PrefKeys.PREFS_FILE_KEY, Context.MODE_WORLD_WRITEABLE);
     if (!prefs.getBoolean(PrefKeys.PREFS_STATUSBAR_ENABLED_KEY, true))
     {
-      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-          WindowManager.LayoutParams.FLAG_FULLSCREEN);
+      getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
     playSound = prefs.getBoolean(PrefKeys.PREFS_MUSIC_ENABLED_KEY, true);
 
-    SharedPreferences seenBefore = getSharedPreferences(
-        PrefKeys.FIRST_RUN_FILE_KEY, Context.MODE_PRIVATE);
+    SharedPreferences seenBefore = getSharedPreferences(PrefKeys.FIRST_RUN_FILE_KEY, Context.MODE_PRIVATE);
     if (!seenBefore.getBoolean(PrefKeys.FIRST_RUN_HELP_MESSAGE_KEY, false))
     {
       SharedPreferences.Editor editor = seenBefore.edit();
@@ -159,13 +156,15 @@ public class Begin extends Activity implements OnTouchListener
     AlertDialog.Builder dialog = new AlertDialog.Builder(this);
     View view = View.inflate(this, R.layout.help_dialog, null);
     TextView tv = (TextView) view.findViewById(R.id.tvHelp);
+    /*
     String string = new String(
         "BitBlast is made possible by your contributions.\nIf you experience any crashes, freezes, "
             + "misbehavior, or you just have a feature request, please don't hesitate to send feedback using the button on the menu."
             + " If BitBlast stops unexpectedly, please send the error report. Only you can make BitBlast great."
             + "\n\nThis message will not be shown again.");
+    */
     dialog.setView(view);
-    tv.setText(string);
+    //tv.setText(string);
     dialog.setPositiveButton("Dismiss", new DialogInterface.OnClickListener()
     {
       @Override
@@ -195,8 +194,7 @@ public class Begin extends Activity implements OnTouchListener
     private final int SPEED = 10;
     // Shrapnel blasts[];
     Random rand;
-    private Bitmap button, ship, bullet, optionsButton, feedbackButton, banner,
-        URLButton, howtoButton;
+    private Bitmap button, ship, bullet, optionsButton, feedbackButton, banner, URLButton, howtoButton;
     private Bullet bullets[];
     private int counter = 0;
     public boolean isRunning = false;
@@ -225,15 +223,11 @@ public class Begin extends Activity implements OnTouchListener
       button = BitmapFactory.decodeResource(getResources(), R.drawable.begin);
       ship = BitmapFactory.decodeResource(getResources(), R.drawable.ship);
       bullet = BitmapFactory.decodeResource(getResources(), R.drawable.bullet);
-      optionsButton = BitmapFactory.decodeResource(getResources(),
-          R.drawable.options_button);
-      feedbackButton = BitmapFactory.decodeResource(getResources(),
-          R.drawable.feedback_button);
+      optionsButton = BitmapFactory.decodeResource(getResources(), R.drawable.options_button);
+      feedbackButton = BitmapFactory.decodeResource(getResources(), R.drawable.feedback_button);
       banner = BitmapFactory.decodeResource(getResources(), R.drawable.banner);
-      URLButton = BitmapFactory.decodeResource(getResources(),
-          R.drawable.view_website_button);
-      howtoButton = BitmapFactory.decodeResource(getResources(),
-          R.drawable.how_to_button);
+      URLButton = BitmapFactory.decodeResource(getResources(), R.drawable.view_website_button);
+      howtoButton = BitmapFactory.decodeResource(getResources(), R.drawable.how_to_button);
       holder = getHolder();
     }
 
@@ -271,19 +265,12 @@ public class Begin extends Activity implements OnTouchListener
             - (ship.getHeight() + (ship.getHeight() / 8));
         final int bannerTop = (int) (getHeight() * 0.01);
 
-        BBBanner.create(canvas.getWidth() / 2 - banner.getWidth() / 2,
-            bannerTop, banner);
-        BBStart.create((canvas.getWidth() / 2) - (button.getWidth() / 2),
-            buttonTop, button);
-        BBHowTo.create(getWidth() / 2 - howtoButton.getWidth() / 2, buttonTop
-            + masterHeight, howtoButton);
-        BBOptions.create(canvas.getWidth() / 2 - optionsButton.getWidth() / 2,
-            buttonTop + masterHeight + height, optionsButton);
-        BBFeedback.create(
-            canvas.getWidth() / 2 - feedbackButton.getWidth() / 2, buttonTop
-                + masterHeight + height * 2, feedbackButton);
-        BBURL.create(canvas.getWidth() / 2 - URLButton.getWidth() / 2,
-            buttonTop + masterHeight + height * 3, URLButton);
+        BBBanner.create(canvas.getWidth() / 2 - banner.getWidth() / 2, bannerTop, banner);
+        BBStart.create((canvas.getWidth() / 2) - (button.getWidth() / 2), buttonTop, button);
+        BBHowTo.create(getWidth() / 2 - howtoButton.getWidth() / 2, buttonTop + masterHeight, howtoButton);
+        BBOptions.create(canvas.getWidth() / 2 - optionsButton.getWidth() / 2, buttonTop + masterHeight + height, optionsButton);
+        BBFeedback.create(canvas.getWidth() / 2 - feedbackButton.getWidth() / 2, buttonTop + masterHeight + height * 2, feedbackButton);
+        BBURL.create(canvas.getWidth() / 2 - URLButton.getWidth() / 2, buttonTop + masterHeight + height * 3, URLButton);
 
         canvas.drawRGB(0, 25, 100);
         counter++;
@@ -321,15 +308,11 @@ public class Begin extends Activity implements OnTouchListener
             }
           }
         }
-        canvas.drawBitmap(ship,
-            (canvas.getWidth() / 2) - (ship.getWidth() / 2), shipTop, null);
+        canvas.drawBitmap(ship,(canvas.getWidth() / 2) - (ship.getWidth() / 2), shipTop, null);
         canvas.drawBitmap(button, BBStart.getLeft(), BBStart.getTop(), null);
-        canvas.drawBitmap(howtoButton, BBHowTo.getLeft(), BBHowTo.getTop(),
-            null);
-        canvas.drawBitmap(optionsButton, BBOptions.getLeft(),
-            BBOptions.getTop(), null);
-        canvas.drawBitmap(feedbackButton, BBFeedback.getLeft(),
-            BBFeedback.getTop(), null);
+        canvas.drawBitmap(howtoButton, BBHowTo.getLeft(), BBHowTo.getTop(), null);
+        canvas.drawBitmap(optionsButton, BBOptions.getLeft(), BBOptions.getTop(), null);
+        canvas.drawBitmap(feedbackButton, BBFeedback.getLeft(), BBFeedback.getTop(), null);
         canvas.drawBitmap(URLButton, BBURL.getLeft(), BBURL.getTop(), null);
         canvas.drawBitmap(banner, BBBanner.getLeft(), BBBanner.getTop(), null);
         holder.unlockCanvasAndPost(canvas);
