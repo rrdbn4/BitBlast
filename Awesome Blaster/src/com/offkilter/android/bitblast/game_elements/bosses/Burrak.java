@@ -79,8 +79,7 @@ public class Burrak extends BaseMob
     return rand.nextInt(SHOOT_CHANCE) == 1;
   }
 
-  private void moveTowardsShip(GLSurfaceView surface, final int speed,
-      final Hero hero, Bitmap picture)
+  private void moveTowardsShip(GLSurfaceView surface, int speed, Hero hero, Bitmap picture)
   {
     int target_middle = hero.getmX() + (hero.getWidth() / 2);
     int this_middle = mX + (getWidth() / 2);
@@ -108,8 +107,7 @@ public class Burrak extends BaseMob
       {
         mX -= speed;
       }
-      else if (target_middle > this_middle
-          && (mX + getWidth() + speed) < surface.getWidth())
+      else if (target_middle > this_middle && (mX + getWidth() + speed) < surface.getWidth())
       {
         mX += speed;
       }
@@ -169,8 +167,7 @@ public class Burrak extends BaseMob
     }
   }
 
-  public void update(GLSurfaceView surface, GameData gamedata, Hero hero,
-      Images images)
+  public void update(GLSurfaceView surface, GameData gamedata, Hero hero, Images images)
   {
     if (gamedata.getState() != PowerupType.FREEZE_BLOCKS && !isMoving())
     {

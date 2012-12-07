@@ -25,10 +25,8 @@ public class HUD
 
   public HUD(Context context)
   {
-    heart = BitmapFactory.decodeResource(context.getResources(),
-        R.drawable.heart);
-    pauseButton = BitmapFactory.decodeResource(context.getResources(),
-        R.drawable.pause);
+    heart = BitmapFactory.decodeResource(context.getResources(), R.drawable.heart);
+    pauseButton = BitmapFactory.decodeResource(context.getResources(), R.drawable.pause);
   }
 
   public void displayScore(Canvas canvas, GameData gamedata)
@@ -48,12 +46,10 @@ public class HUD
     int height = pauseButton.getHeight();
     int width = pauseButton.getWidth();
     Rect dest = new Rect(0, 0, width, height);
-    spriteBatcher.draw(gl, R.drawable.pause, new Rect(0, 0, width, height),
-        dest);
+    spriteBatcher.draw(gl, R.drawable.pause, new Rect(0, 0, width, height), dest);
   }
 
-  public void displayHearts(GLSurfaceView surface, GL10 gl,
-      SpriteBatcher spriteBatcher, GameData gamedata, Hero hero)
+  public void displayHearts(GLSurfaceView surface, GL10 gl, SpriteBatcher spriteBatcher, GameData gamedata, Hero hero)
   {
     int height = heart.getHeight();
     int width = heart.getWidth();
@@ -63,8 +59,7 @@ public class HUD
     {
       mX = i * width;
       Rect dest = new Rect(mX, mY, mX + width, mY + height);
-      spriteBatcher.draw(gl, R.drawable.heart, new Rect(0, 0, width, height),
-          dest);
+      spriteBatcher.draw(gl, R.drawable.heart, new Rect(0, 0, width, height), dest);
     }
   }
 }

@@ -27,13 +27,11 @@ public class GameBackground
 
   private Random rand = new Random();
 
-  public void draw(GL10 gl, SpriteBatcher spriteBatcher, GLSurfaceView surface,
-      GameData gamedata, Hero hero)
+  public void draw(GL10 gl, SpriteBatcher spriteBatcher, GLSurfaceView surface, GameData gamedata, Hero hero)
   {
     if (initialize)
     {
-      gl.glClearColor(dRed / numColors, dGreen / numColors, dBlue / numColors,
-          alpha);
+      gl.glClearColor(dRed / numColors, dGreen / numColors, dBlue / numColors, alpha);
       initialize = false;
     }
 
@@ -49,8 +47,7 @@ public class GameBackground
       tBlue += 2;
       if (tRed <= 50)
         hero.setShowRed(false);
-      gl.glClearColor(tRed / numColors, dGreen / numColors, tBlue / numColors,
-          alpha);
+      gl.glClearColor(tRed / numColors, dGreen / numColors, tBlue / numColors, alpha);
     }
 
     // Decorate with shrapnel
@@ -60,8 +57,7 @@ public class GameBackground
       {
         if (rand.nextInt(10) == 0)
         {
-          gamedata.blasts[i].setStart(rand.nextInt(surface.getWidth()),
-              rand.nextInt(surface.getHeight()));
+          gamedata.blasts[i].setStart(rand.nextInt(surface.getWidth()), rand.nextInt(surface.getHeight()));
         }
       }
       else
