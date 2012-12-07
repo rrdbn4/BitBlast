@@ -32,6 +32,7 @@ import com.smulk.bitblast.data.GameData;
 import com.smulk.bitblast.data.PrefKeys;
 import com.smulk.bitblast.game_elements.Bullet;
 import com.smulk.bitblast.graphics.Shrapnel;
+import com.smulk.bitblast.graphics.SpriteBatcher;
 import com.smulk.bitblast.utils.BBButton;
 
 public class Begin extends Activity implements OnTouchListener
@@ -49,6 +50,7 @@ public class Begin extends Activity implements OnTouchListener
 		view.setOnTouchListener(this);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(view);
+		
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		
 		BBStart = new BBButton();
@@ -93,7 +95,7 @@ public class Begin extends Activity implements OnTouchListener
 			mp = null;
 		}
 	}
-	
+
 	@Override
 	protected void onPause()
 	{
@@ -117,9 +119,6 @@ public class Begin extends Activity implements OnTouchListener
 			if(BBStart.isClicked(event.getX(), event.getY()))
 			{
 				startActivity(new Intent(this, BitBlast.class));
-				//TODO: Find out why is is a null pointer when going from options menu to in game
-				//if(playSound)
-					//mp.stop();
         finish();
 			}
 			else if (BBOptions.isClicked(event.getX(), event.getY()))

@@ -32,7 +32,7 @@ public class Powerup extends BaseObject
   
   public boolean spawn()
   {
-    return rand.nextInt(SPAWN_CHANCE) == 0;
+    return rand.nextInt(SPAWN_CHANCE) == 1;
   }
   
   public void resetPowerup()
@@ -97,16 +97,16 @@ public class Powerup extends BaseObject
     switch(type)
     {
       case FREEZE_BLOCKS:
-        gamedata.setState(PowerupType.FREEZE_BLOCKS);
+        //gamedata.setState(PowerupType.FREEZE_BLOCKS);
         break;
       case GOOBLER:
-        gamedata.setState(PowerupType.GOOBLER);
+        //gamedata.setState(PowerupType.GOOBLER);
         break;
       case INVINCIBLE:
-        hero.setState(PowerupType.INVINCIBLE);
+        //hero.setState(PowerupType.INVINCIBLE);
         break;
       case BREAK_MIRRORS:
-        hero.setState(PowerupType.BREAK_MIRRORS);
+        //hero.setState(PowerupType.BREAK_MIRRORS);
         break;
       default:
         Log.d("powerupSelector(), Powerup.java", "Powerup undefined.");
@@ -119,7 +119,8 @@ public class Powerup extends BaseObject
     }
     if(hero.getState() == PowerupType.INVINCIBLE)
     {
-      hero.setImage((BitmapFactory.decodeResource(GameData.leContext.getResources(), R.drawable.invince_ship)));
+    	//TODO: Line below doesn't do anything as the opengl renderer uses id's 
+      //hero.setImage((BitmapFactory.decodeResource(GameData.leContext.getResources(), R.drawable.invince_ship)));
     }
   }
   

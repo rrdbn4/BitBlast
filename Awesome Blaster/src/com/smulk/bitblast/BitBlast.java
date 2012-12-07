@@ -176,16 +176,18 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
   {
     if(touch.getAction() == MotionEvent.ACTION_DOWN)
     { 
-      /*
       if(gamedata.BBplayPause.isClicked(touch.getX(), touch.getY()))
       {
         if(gamedata.getIsRunning())
-          view.pause();
+        {
+          //view.pause();
+        }
         else
-          view.resume();  
+        {
+          //view.resume();
+        }
       }
       else
-      */
         hero.shoot();
     } 
     return true;

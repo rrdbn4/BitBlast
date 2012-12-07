@@ -26,7 +26,7 @@ public class Block extends BaseMob
   protected int speed;
   protected int defaultSpeed;
   
-  protected int damage = 1;
+  protected int damage;
   protected int defaultDamage;
   
   protected int pointMultiplier = 10;
