@@ -128,8 +128,7 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
 
     surface = new GLSurfaceView(this);
     setContentView(surface);
-    surface.setRenderer(new SpriteBatcher(getResources(), images.getSprites(),
-        this));
+    surface.setRenderer(new SpriteBatcher(getResources(), images.getSprites(), this));
     surface.setOnTouchListener(this);
   }
 
