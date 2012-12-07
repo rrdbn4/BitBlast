@@ -32,8 +32,8 @@ public class BaseObject extends BaseSprite
 
   public void resetObject()
   {
+    baseReset();
     isMoving = false;
     spawnChance = 0;
-    baseReset();
   }
 }

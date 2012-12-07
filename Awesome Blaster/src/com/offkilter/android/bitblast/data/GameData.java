@@ -53,8 +53,14 @@ public class GameData
   { "Freeze Blocks", "Goobler", "Invincuble", "Break Mirrors" };
 
   public final static int blockColors[] =
-  { Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.RED, Color.WHITE,
-      Color.YELLOW,
+  { 
+    Color.BLUE,
+    Color.CYAN,
+    Color.GREEN,
+    Color.MAGENTA,
+    Color.RED,
+    Color.WHITE,
+    Color.YELLOW,
   // Color.DKGRAY
   };
 
@@ -75,8 +81,7 @@ public class GameData
     leContext = context;
 
     for (int i = 0; i < blasts.length; i++)
-      blasts[i] = new Shrapnel(leContext, SHRAPNEL_DECOR_SIZE,
-          SHRAPNEL_DECOR_SIZE, Color.WHITE);
+      blasts[i] = new Shrapnel(leContext, SHRAPNEL_DECOR_SIZE, SHRAPNEL_DECOR_SIZE, Color.WHITE);
   }
 
   public void setResetState(Boolean value)
@@ -244,8 +249,7 @@ public class GameData
   {
     hero.setState(PowerupType.NONE);
     gamedata.setState(PowerupType.NONE);
-    hero.setImage((BitmapFactory.decodeResource(leContext.getResources(),
-        R.drawable.ship)));
+    hero.setImage((BitmapFactory.decodeResource(leContext.getResources(), R.drawable.ship)));
     gamedata.setResetState(false);
   }
 }

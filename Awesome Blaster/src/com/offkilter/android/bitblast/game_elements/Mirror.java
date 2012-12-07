@@ -28,8 +28,7 @@ public class Mirror extends Block
     srcY = 1 * height;
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
 
-    shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE,
-        GameData.SHRAPNEL_BLOWUP_SIZE, Color.DKGRAY);
+    shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, Color.DKGRAY);
 
     defaultDamage = 1;
     defaultSpeed = GameData.MIRROR_SPEED;

@@ -40,16 +40,11 @@ public class Block extends BaseMob
     spriteSheetHeight = 2;
     imageID = R.drawable.block_sprites;
     image = BitmapFactory.decodeResource(context.getResources(), imageID);
-    setDimensions(image.getHeight() / spriteSheetHeight, image.getWidth()
-        / spriteSheetWidth);
-    shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE,
-        GameData.SHRAPNEL_BLOWUP_SIZE, color);
+    setDimensions(image.getHeight() / spriteSheetHeight, image.getWidth() / spriteSheetWidth);
+    shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, color);
 
     defaultDamage = 1;
     defaultSpeed = GameData.BLOCK_SPEED;
-    // src = new Rect(srcX, srcY, width + srcX, height + srcY);
-
-    // shrapnel = new Shrapnel(GameData.leContext);
 
     resetBlock();
 
@@ -126,17 +121,13 @@ public class Block extends BaseMob
         sound.getBlowUp().play(sound.getExplosion(), 1, 1, 0, 0, 1);
 
       gamedata.addScore(pointValue);
-      shrapnel = new Shrapnel(GameData.leContext,
-          GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, color);
+      shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, color);
       shrapnel.setStart(mX + (width / 2), mY + (height / 2));
-      // shrapnel.startShrapnel(gamedata, mX + (width / 2), mY + (height / 2),
-      // 7, 7, color);
       resetBlock();
     }
   }
 
-  public void update(GLSurfaceView surface, GameData gamedata, Hero hero,
-      Sound sound)
+  public void update(GLSurfaceView surface, GameData gamedata, Hero hero, Sound sound)
   {
     if (isMoving())
     {
@@ -182,8 +173,7 @@ public class Block extends BaseMob
     else
     // if it isn't moving
     {
-      if (spawn() && !gamedata.getBlockFreeze()
-          && gamedata.getState() != PowerupType.FREEZE_BLOCKS
+      if (spawn() && !gamedata.getBlockFreeze() && gamedata.getState() != PowerupType.FREEZE_BLOCKS
           && gamedata.hasMetGapThreshold())
       {
         // initialize block

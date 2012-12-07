@@ -166,8 +166,7 @@ public class Powerup extends BaseObject
     }
   }
 
-  public void draw(GL10 gl, SpriteBatcher spriteBatcher, GameData gamedata,
-      Images images, Hero hero)
+  public void draw(GL10 gl, SpriteBatcher spriteBatcher, GameData gamedata, Images images, Hero hero)
   {
     if (isMoving())
     {

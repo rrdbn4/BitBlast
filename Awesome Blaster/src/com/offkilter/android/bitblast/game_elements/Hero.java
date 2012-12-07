@@ -37,8 +37,7 @@ public class Hero extends BaseMob
     spriteSheetWidth = 2;
     spriteSheetHeight = 2;
     image = BitmapFactory.decodeResource(context.getResources(), imageID);
-    setDimensions(image.getHeight() / spriteSheetHeight, image.getWidth()
-        / spriteSheetWidth);
+    setDimensions(image.getHeight() / spriteSheetHeight, image.getWidth() / spriteSheetWidth);
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
 
     health = 10;
@@ -143,8 +142,7 @@ public class Hero extends BaseMob
   public void update(GLSurfaceView surface, GameData gamedata, Burrak burrakBoss)
   {
     // position based on accelerometer
-    if (((shipPosition - (change * 5)) > 0)
-        && (shipPosition - (change * 5)) < (surface.getWidth() - getWidth()))
+    if (((shipPosition - (change * 5)) > 0) && (shipPosition - (change * 5)) < (surface.getWidth() - getWidth()))
       shipPosition -= change * 5;
 
     // change image based on tilt
