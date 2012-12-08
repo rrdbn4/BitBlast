@@ -48,7 +48,8 @@ public class Images
     R.drawable.stats_button,
     R.drawable.switch_off_select,
     R.drawable.switch_on_select,
-    R.drawable.view_website_button 
+    R.drawable.view_website_button, 
+    R.drawable.ship_spritesheet
   };
 
   public Images(Context context)

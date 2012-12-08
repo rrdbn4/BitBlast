@@ -34,9 +34,9 @@ public class Hero extends BaseMob
 
   public Hero(Context context, Images images)
   {
-    imageID = R.drawable.test_ship;
-    spriteSheetWidth = 2;
-    spriteSheetHeight = 2;
+    imageID = R.drawable.ship_spritesheet;
+    spriteSheetWidth = 3;
+    spriteSheetHeight = 1;
     image = BitmapFactory.decodeResource(context.getResources(), imageID);
     setDimensions(image.getHeight() / spriteSheetHeight, image.getWidth() / spriteSheetWidth);
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
@@ -165,18 +165,18 @@ public class Hero extends BaseMob
       if (change > 0)
       {
         srcX = 0 * width;
-        srcY = 1 * height;
+        //srcY = 1 * height;
       }
       else if (change < 0)
       {
-        srcX = 1 * width;
-        srcY = 1 * height;
+        srcX = 2 * width;
+        //srcY = 1 * height;
       }
     }
     else
     {
-      srcX = 0 * width;
-      srcY = 0 * height;
+      srcX = 1 * width;
+      //srcY = 0 * height;
     }
 
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
