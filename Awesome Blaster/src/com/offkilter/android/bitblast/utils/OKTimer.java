@@ -15,6 +15,8 @@ public class OKTimer implements Runnable
   private Method invocation;
   private float interval = 0;
   private float counter = 0;
+  private Thread thread;
+  private boolean isRunning = false;
   
   public void setMethodToCall(Object targ, String method, float seconds)
   {
@@ -37,17 +39,27 @@ public class OKTimer implements Runnable
   {
     if(invocation != null)
     {
-      Thread thread = new Thread(this);
+      thread = new Thread(this);
       thread.start();
+      isRunning = true;
     }
     else
       Log.e("Timer", "invocation has not been initialized");
+  }
+  
+  public void stopTimer()
+  {
+    if(thread != null)
+    {
+      isRunning = false;
+      thread.stop();
+    }  
   }
 
   @Override
   public void run()
   {
-    while(true)
+    while(isRunning)
     { 
       try
       {
