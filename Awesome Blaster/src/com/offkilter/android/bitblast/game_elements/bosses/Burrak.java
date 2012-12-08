@@ -15,6 +15,7 @@ import com.offkilter.android.bitblast.game_elements.Bullet;
 import com.offkilter.android.bitblast.game_elements.Hero;
 import com.offkilter.android.bitblast.graphics.Images;
 import com.offkilter.android.bitblast.graphics.SpriteBatcher;
+import com.offkilter.android.bitblast.utils.OKTimer;
 import com.offkilter.android.bitblast.R;
 
 //TODO: the image of this boss should be a ship to match the theme of the game
@@ -33,6 +34,8 @@ public class Burrak extends BaseMob
   public Bullet bullets[];
 
   private int madCounter = 0;
+  
+  private OKTimer timer;
 
   public Burrak(Context context)
   {

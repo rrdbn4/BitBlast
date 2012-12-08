@@ -69,7 +69,7 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
   private GameData gamedata;
   private Images images;
   private Sound sound;
-  private OKTimer timer;
+  //private OKTimer timer;
 
   private Hero hero;
   private Block block[];
@@ -115,7 +115,7 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     gamedata = new GameData(this);
     images = new Images(this);
     sound = new Sound();
-    timer = new OKTimer();
+    //timer = new OKTimer();
 
     hero = new Hero(this, images);
 
