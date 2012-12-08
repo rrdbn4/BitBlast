@@ -75,8 +75,6 @@ public class Burrak extends BaseMob
   public void takeDamage(int amount)
   {
     health -= amount;
-    if (health <= 0)
-      resetGoobler();
   }
 
   private boolean shootChance()

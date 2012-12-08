@@ -108,8 +108,11 @@ public class Bullet extends BaseObject
           burrakBoss.setIsMad(true);
           
           if(playerBullet)
-            if(burrakBoss.getHeight() <= 0)
+            if(burrakBoss.getHealth() <= 0)
+            {  
               hero.addScore(2000);
+              burrakBoss.resetGoobler();
+            }  
           
           resetBullet();
         }
