@@ -59,6 +59,11 @@ public class Burrak extends BaseMob
   {
     return showRed;
   }
+  
+  public void setIsMad(Boolean value)
+  {
+    isMad = value;
+  }
 
   public void resetGoobler()
   {

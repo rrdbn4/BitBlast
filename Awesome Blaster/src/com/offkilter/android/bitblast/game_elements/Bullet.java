@@ -99,12 +99,15 @@ public class Bullet extends BaseObject
         if(hit(burrakBoss))
         {
           burrakBoss.takeDamage(damage);
+          burrakBoss.setIsMad(true);
+          resetBullet();
         }
       }
       
       if(hit(hero))
       {
         hero.damageShip(gamedata, damage);
+        resetBullet();
       }
       
       for(int i = 0; i < block.length; i++)
