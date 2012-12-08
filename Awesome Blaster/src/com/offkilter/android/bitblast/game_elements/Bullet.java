@@ -90,7 +90,7 @@ public class Bullet extends BaseObject
   public void update(GLSurfaceView surface, GameData gamedata, Sound sound, Burrak burrakBoss, Hero hero, Block[] block, Mirror[] mirror)
   {
     if (isMoving())
-    {
+    { 
       if (playSound)
       {
         playSound = false;
@@ -99,13 +99,6 @@ public class Bullet extends BaseObject
           sound.getBang().play(sound.getExplosion(), 1, 1, 0, 0, 1);
         }
       }
-      
-      if (mY - speed < 0)
-        resetBullet();
-      else if (mY >= surface.getHeight())
-        resetBullet();
-      else
-        mY += speed;
       
       if(burrakBoss.isMoving())
       {
@@ -173,6 +166,13 @@ public class Bullet extends BaseObject
           }
         }
       }
+      
+      if (mY - speed < 0)
+        resetBullet();
+      else if (mY >= surface.getHeight())
+        resetBullet();
+      else
+        mY += speed;
     }
   }
 
