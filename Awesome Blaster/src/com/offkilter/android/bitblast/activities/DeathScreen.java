@@ -220,11 +220,8 @@ public class DeathScreen extends Activity implements OnTouchListener, OnCompleti
     @Override
     protected void onDraw(Canvas canvas)
     {
-      if (firstRun)
-      {
-        bbcontinue.create(canvas.getWidth() - continueBut.getWidth(), getHeight() - continueBut.getHeight(), continueBut);
-        firstRun = false;
-      }
+
+      bbcontinue.create(canvas.getWidth() - continueBut.getWidth(), getHeight() - continueBut.getHeight(), continueBut);
       counter2++;
       counter += (countingDown ? -4 : 4);
       if (counter > 250)
