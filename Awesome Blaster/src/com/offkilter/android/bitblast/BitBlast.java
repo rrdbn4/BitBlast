@@ -22,6 +22,8 @@
 
 package com.offkilter.android.bitblast;
 
+
+
 import javax.microedition.khronos.opengles.GL10;
 
 import android.app.Activity;
@@ -53,6 +55,8 @@ import com.offkilter.android.bitblast.graphics.HUD;
 import com.offkilter.android.bitblast.graphics.Images;
 import com.offkilter.android.bitblast.graphics.SpriteBatcher;
 import com.offkilter.android.bitblast.sound.Sound;
+import com.offkilter.android.bitblast.utils.OKTimer;
+
 
 public class BitBlast extends Activity implements SensorEventListener, OnTouchListener, Drawer
 {
@@ -65,6 +69,7 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
   private GameData gamedata;
   private Images images;
   private Sound sound;
+  private OKTimer timer;
 
   private Hero hero;
   private Block block[];
@@ -110,6 +115,10 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     gamedata = new GameData(this);
     images = new Images(this);
     sound = new Sound();
+    timer = new OKTimer();
+    
+    timer.setMethodToCall(this, "heroShoot", 1.0f);
+    timer.startTimer();
 
     hero = new Hero(this, images);
 
@@ -186,6 +195,11 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
         hero.shoot();
     }
     return true;
+  }
+  
+  public void heroShoot()
+  {
+    hero.shoot();
   }
 
   // called every frame
