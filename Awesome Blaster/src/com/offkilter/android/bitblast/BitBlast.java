@@ -116,9 +116,6 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     images = new Images(this);
     sound = new Sound();
     timer = new OKTimer();
-    
-    timer.setMethodToCall(this, "heroShoot", 1.0f);
-    timer.startTimer();
 
     hero = new Hero(this, images);
 
@@ -139,6 +136,10 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     setContentView(surface);
     surface.setRenderer(new SpriteBatcher(getResources(), images.getSprites(), this));
     surface.setOnTouchListener(this);
+    
+    //HOW TO USE TIMER
+    //timer.setMethodToCall(this, "heroShoot", 0.2f);
+    //timer.startTimer();
   }
 
   @Override
