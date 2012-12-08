@@ -37,7 +37,7 @@ import com.offkilter.android.bitblast.R;
 public class Begin extends Activity implements OnTouchListener
 {
   ArtWork view;
-  private BBButton BBStart, BBOptions, BBFeedback, BBBanner, BBURL, BBHowTo;
+  private BBButton BBStart, BBFeedback, BBBanner, BBURL, BBHowTo;
   MediaPlayer mp;
   boolean playSound;
 
@@ -53,7 +53,6 @@ public class Begin extends Activity implements OnTouchListener
     setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
     BBStart = new BBButton();
-    BBOptions = new BBButton();
     BBFeedback = new BBButton();
     BBBanner = new BBButton();
     BBURL = new BBButton();
@@ -120,10 +119,6 @@ public class Begin extends Activity implements OnTouchListener
       {
         startActivity(new Intent(this, BitBlast.class));
         finish();
-      }
-      else if (BBOptions.isClicked(event.getX(), event.getY()))
-      {
-        startActivity(new Intent(this, Options.class));
       }
       else if (BBFeedback.isClicked(event.getX(), event.getY()))
       {
@@ -268,9 +263,8 @@ public class Begin extends Activity implements OnTouchListener
         BBBanner.create(canvas.getWidth() / 2 - banner.getWidth() / 2, bannerTop, banner);
         BBStart.create((canvas.getWidth() / 2) - (button.getWidth() / 2), buttonTop, button);
         BBHowTo.create(getWidth() / 2 - howtoButton.getWidth() / 2, buttonTop + masterHeight, howtoButton);
-        BBOptions.create(canvas.getWidth() / 2 - optionsButton.getWidth() / 2, buttonTop + masterHeight + height, optionsButton);
-        BBFeedback.create(canvas.getWidth() / 2 - feedbackButton.getWidth() / 2, buttonTop + masterHeight + height * 2, feedbackButton);
-        BBURL.create(canvas.getWidth() / 2 - URLButton.getWidth() / 2, buttonTop + masterHeight + height * 3, URLButton);
+        BBFeedback.create(canvas.getWidth() / 2 - feedbackButton.getWidth() / 2, buttonTop + masterHeight + height, feedbackButton);
+        BBURL.create(canvas.getWidth() / 2 - URLButton.getWidth() / 2, buttonTop + masterHeight + height * 2, URLButton);
 
         canvas.drawRGB(0, 25, 100);
         counter++;
@@ -311,7 +305,6 @@ public class Begin extends Activity implements OnTouchListener
         canvas.drawBitmap(ship,(canvas.getWidth() / 2) - (ship.getWidth() / 2), shipTop, null);
         canvas.drawBitmap(button, BBStart.getLeft(), BBStart.getTop(), null);
         canvas.drawBitmap(howtoButton, BBHowTo.getLeft(), BBHowTo.getTop(), null);
-        canvas.drawBitmap(optionsButton, BBOptions.getLeft(), BBOptions.getTop(), null);
         canvas.drawBitmap(feedbackButton, BBFeedback.getLeft(), BBFeedback.getTop(), null);
         canvas.drawBitmap(URLButton, BBURL.getLeft(), BBURL.getTop(), null);
         canvas.drawBitmap(banner, BBBanner.getLeft(), BBBanner.getTop(), null);
