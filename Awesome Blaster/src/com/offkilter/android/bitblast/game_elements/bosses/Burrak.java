@@ -29,11 +29,8 @@ public class Burrak extends BaseMob
   private boolean goingDown;
   private boolean goingLeft;
   private boolean isMad = false;
-  private boolean showRed = false;
 
   public Bullet bullets[];
-
-  private int madCounter = 0;
   
   private OKTimer timer;
 
@@ -49,18 +46,11 @@ public class Burrak extends BaseMob
     bullets = new Bullet[GameData.GOOBLER_BULLET_NUM];
     for (int i = 0; i < bullets.length; i++)
       bullets[i] = new Bullet(context, GameData.GOOBLER_BULLET_SPEED, 2);
+    
+    timer = new OKTimer();
+    timer.setMethodToCall(this, "notMad", 0.2f);
 
     resetGoobler();
-  }
-
-  public void setShowRed(Boolean value)
-  {
-    showRed = value;
-  }
-
-  public boolean getShowRed()
-  {
-    return showRed;
   }
   
   public void setIsMad(Boolean value)
@@ -72,7 +62,7 @@ public class Burrak extends BaseMob
   {
     resetMob();
     health = MAX_HEALTH;
-    isMad = showRed = isMovingRandomly = goingLeft = goingDown = false;
+    isMad = isMovingRandomly = goingLeft = goingDown = false;
   }
 
   public void takeDamage(int amount)
@@ -84,8 +74,14 @@ public class Burrak extends BaseMob
   {
     return rand.nextInt(SHOOT_CHANCE) == 1;
   }
+  
+  public void notMad()
+  {
+    isMad = false;
+    timer.stopTimer();
+  }
 
-  private void moveTowardsShip(GLSurfaceView surface, int speed, Hero hero, Bitmap picture)
+  private void moveTowardShip(GLSurfaceView surface, int speed, Hero hero, Bitmap picture)
   {
     int target_middle = hero.getmX() + (hero.getWidth() / 2);
     int this_middle = mX + (getWidth() / 2);
@@ -206,41 +202,10 @@ public class Burrak extends BaseMob
     // if spawned then move with this
     if (isMoving())
     {
-      if (!isMad)
-        moveTowardsShip(surface, 3, hero, images.getEnemy());
-      else
-      {
-        madCounter++;
-        if (madCounter >= 25)
-        {
-          madCounter = 0;
-          isMad = true;
-        }
-        moveTowardsShip(surface, 3, hero, images.getEnemyMad());
-      }
-
-      /*
-      for (int i = 0; i < hero.bullets.length; i++)
-      {
-        if (hero.bullets[i].isMoving())
-        {
-          // when block encounters a bullet
-          if (hit(hero.bullets[i]))
-          {
-            takeDamage(hero.bullets[i].getDamage());
-
-            isMad = true;
-            // TODO: Make added point value a constant
-            gamedata.addScore(50);
-            hero.bullets[i].resetBullet();
-
-            if (!isMoving())
-              gamedata.setAllBlockFreeze(false);
-          }
-        }
-      }
-      */
-
+      if(isMad)
+        timer.startTimer();
+        
+      moveTowardShip(surface, 3, hero, images.getEnemy());
     }
   }
 
