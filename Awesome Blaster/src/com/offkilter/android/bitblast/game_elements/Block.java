@@ -44,7 +44,6 @@ public class Block extends BaseMob
     shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, color);
 
     defaultDamage = 1;
-    defaultSpeed = GameData.BLOCK_SPEED;
 
     resetBlock();
 
@@ -54,8 +53,6 @@ public class Block extends BaseMob
   public void resetBlock()
   {
     resetMob();
-    speed = defaultSpeed;
-    damage = defaultDamage;
     color = GameData.blockColors[rand.nextInt(GameData.blockColors.length)];
 
     switch (color)
@@ -65,48 +62,58 @@ public class Block extends BaseMob
         srcY = 0 * height;
         health = 7;
         pointValue = health * pointMultiplier;
+        defaultSpeed = 7;
         break;
       case Color.CYAN:
         srcX = 1 * width;
         srcY = 0 * height;
         health = 6;
         pointValue = health * pointMultiplier;
+        defaultSpeed = 6;
         break;
       case Color.GREEN:
         srcX = 2 * width;
         srcY = 0 * height;
         health = 5;
         pointValue = health * pointMultiplier;
+        defaultSpeed = 5;
         break;
       case Color.MAGENTA:
         srcX = 3 * width;
         srcY = 0 * height;
         health = 4;
         pointValue = health * pointMultiplier;
+        defaultSpeed = 4;
         break;
       case Color.RED:
         srcX = 0 * width;
         srcY = 1 * height;
         health = 3;
         pointValue = health * pointMultiplier;
+        defaultSpeed = 3;
         break;
       case Color.WHITE:
         srcX = 1 * width;
         srcY = 1 * height;
         health = 2;
         pointValue = health * pointMultiplier;
+        defaultSpeed = 2;
         break;
       case Color.YELLOW:
         srcX = 2 * width;
         srcY = 1 * height;
         health = 1;
         pointValue = health * pointMultiplier;
+        defaultSpeed = 1;
         break;
       default:
+        defaultSpeed = GameData.BLOCK_SPEED;
         Log.d("resetBlock(), Block.java", "Color not found.");
         break;
     }
 
+    speed = defaultSpeed;
+    damage = defaultDamage;
     beenHit = false;
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
   }
