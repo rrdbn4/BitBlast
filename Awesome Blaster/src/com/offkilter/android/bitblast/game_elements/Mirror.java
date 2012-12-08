@@ -36,7 +36,7 @@ public class Mirror extends Block
     resetMirror();
   }
 
-  private void resetMirror()
+  public void resetMirror()
   {
     resetMob();
     damage = 1;

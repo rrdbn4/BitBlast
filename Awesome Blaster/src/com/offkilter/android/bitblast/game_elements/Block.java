@@ -121,7 +121,6 @@ public class Block extends BaseMob
 
       shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, color);
       shrapnel.setStart(mX + (width / 2), mY + (height / 2));
-      resetBlock();
     }
   }
   

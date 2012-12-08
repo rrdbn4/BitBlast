@@ -137,6 +137,7 @@ public class Bullet extends BaseObject
               if(block[i].getHealth() <= 0)
                 hero.addScore(block[i].getPointValue());
             
+            block[i].resetBlock();
             resetBullet();
           }
         }
@@ -150,13 +151,15 @@ public class Bullet extends BaseObject
           {
             speed = -speed;
             
+            //TODO: add check if player has mirror powerup
             if(mirror[i].getHealth() <= 0)
             {
-              resetBullet();
               if(playerBullet)
               {
                 hero.addScore(block[i].getPointValue());
               }
+              resetBullet();
+              mirror[i].resetMirror();
             }
             
           }
