@@ -80,6 +80,20 @@ public class Burrak extends BaseMob
     isMad = false;
     timer.stop();
   }
+  
+  private void shoot()
+  {
+    for (int i = 0; i < bullets.length; i++)
+    {
+      if (!bullets[i].isMoving())
+      {
+        bullets[i].shoot();
+        bullets[i].setmY(mY + height + bullets[i].getSpeed());
+        bullets[i].setmX(mX + (width / 2));
+        i = bullets.length;
+      }
+    }
+  }
 
   private void moveTowardShip(GLSurfaceView surface, int speed, Hero hero, Bitmap picture)
   {
@@ -88,16 +102,7 @@ public class Burrak extends BaseMob
 
     if (shootChance())
     {
-      for (int i = 0; i < bullets.length; i++)
-      {
-        if (!bullets[i].isMoving())
-        {
-          bullets[i].shoot();
-          bullets[i].setmY(mY + height + bullets[i].getSpeed());
-          bullets[i].setmX(mX + (width / 2));
-          i = bullets.length;
-        }
-      }
+      shoot();
       isMovingRandomly = (isMovingRandomly ? false : true);
     }
 
@@ -118,16 +123,7 @@ public class Burrak extends BaseMob
       // trigger random decision
       if (shootChance())
       {
-        for (int i = 0; i < bullets.length; i++)
-        {
-          if (!bullets[i].isMoving())
-          {
-            bullets[i].shoot();
-            bullets[i].setmY(mY + height + bullets[i].getSpeed());
-            bullets[i].setmX(mX + (width / 2));
-            i = bullets.length;
-          }
-        }
+        shoot();
         goingLeft = (goingLeft ? false : true);
       }
 
