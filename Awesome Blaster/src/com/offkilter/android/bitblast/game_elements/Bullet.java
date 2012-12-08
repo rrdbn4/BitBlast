@@ -100,6 +100,13 @@ public class Bullet extends BaseObject
         }
       }
       
+      if (mY - speed < 0)
+        resetBullet();
+      else if (mY >= surface.getHeight())
+        resetBullet();
+      else
+        mY += 2*speed;
+      
       if(burrakBoss.isMoving())
       {
         if(hit(burrakBoss))
@@ -135,9 +142,10 @@ public class Bullet extends BaseObject
             
             if(playerBullet)
               if(block[i].getHealth() <= 0)
+              {
                 hero.addScore(block[i].getPointValue());
-            
-            block[i].resetBlock();
+                block[i].resetBlock();
+              }
             resetBullet();
           }
         }
@@ -165,14 +173,6 @@ public class Bullet extends BaseObject
           }
         }
       }
-      
-
-      if (mY - speed < 0)
-        resetBullet();
-      else if (mY >= surface.getHeight())
-        resetBullet();
-      else
-        mY += speed;
     }
   }
 
