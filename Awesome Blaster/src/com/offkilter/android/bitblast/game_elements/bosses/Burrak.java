@@ -50,16 +50,22 @@ public class Burrak extends BaseMob
     for (int i = 0; i < bullets.length; i++)
       bullets[i] = new Bullet(context, GameData.GOOBLER_BULLET_SPEED, 2);
     
-    timer = new OKTimer();
-    timer.setMethod(this, "notMad", 0.2f);
+    timer = new OKTimer(this, "setNotMad", 0.2f);
 
     resetBurrak();
   }
   
-  public void setIsMad(Boolean value)
+  public void setNotMad()
   {
-    isMad = value;
+    isMad = false;
   }
+  
+  public void setMad()
+  {
+    isMad = true;
+  }
+  
+  
 
   public void resetBurrak()
   {
@@ -208,7 +214,7 @@ public class Burrak extends BaseMob
       if(health > 0)
       {
         if(isMad)
-          //timer.start();
+          timer.start();
           
         moveTowardShip(surface, 3, hero, images.getEnemy());
       }

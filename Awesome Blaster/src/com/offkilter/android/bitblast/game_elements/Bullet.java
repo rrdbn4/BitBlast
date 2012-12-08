@@ -105,7 +105,7 @@ public class Bullet extends BaseObject
         if(hit(burrakBoss))
         {
           burrakBoss.damage(damage);
-          burrakBoss.setIsMad(true);
+          burrakBoss.setMad();
           
           if(burrakBoss.getHealth() <= 0)
           {

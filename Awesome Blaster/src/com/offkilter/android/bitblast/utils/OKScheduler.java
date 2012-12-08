@@ -17,9 +17,8 @@ public class OKScheduler implements Runnable
   private float counter = 0;
   private Thread thread;
   private boolean isRunning = false;
-
   
-  public void setMethodToCall(Object targ, String method, float seconds)
+  public OKScheduler(Object targ, String method, float seconds)
   {
     interval = seconds;
     selector = method;

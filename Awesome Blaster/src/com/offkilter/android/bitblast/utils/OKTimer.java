@@ -5,39 +5,30 @@ import java.lang.reflect.Method;
 
 import android.util.Log;
 
-//OKScheduler (Off Kilter Scheduler)
-//Author: Robert Dunn
-
-
 public class OKTimer implements Runnable
 {
-  private Thread thread;
   private Object target;
-  private String method;
+  private String selector;
   private Method invocation;
-  private float interval, elapsed;
+  private float interval = 0;
+  private float counter = 0;
+  private Thread thread;
   private boolean isRunning = false;
 
-  //Calls the specified method once then kills the timer
-  public void setMethod(Object target, String selector, float seconds)
+  
+  public OKTimer(Object targ, String method, float seconds)
   {
-    this.target = target;
-    method = selector;
     interval = seconds;
+    selector = method;
+    target = targ;
     
     try
     {
       Class<?> cls = target.getClass();
-      invocation = cls.getMethod(method);
-    }
-    catch (SecurityException e)
-    {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      invocation = cls.getMethod(selector);
     }
     catch (NoSuchMethodException e)
     {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
@@ -51,36 +42,42 @@ public class OKTimer implements Runnable
       isRunning = true;
     }
     else
-      Log.e("OKTimer.java", "Invocation has not been initialized.");
+      Log.e("OKScheduler.java", "Invocation has not been initialized.");
   }
   
+  public void stop()
+  {
+    if(thread != null)
+    {
+      isRunning = false;
+    }  
+  }
+
   @Override
   public void run()
   {
     while(isRunning)
-    {
+    { 
       try
       {
         Thread.sleep(1);
       }
       catch (InterruptedException e)
       {
-        // TODO Auto-generated catch block
         e.printStackTrace();
       }
       
-      elapsed += 0.001f;
-      if(elapsed >= interval)
+      counter += 0.001f;
+      if(counter >= interval)
+      {
+        counter = 0;
         invokeMethod();
-    }  
+      }
+    }
   }
   
   private void invokeMethod()
   {
-    elapsed = 0;
-    interval = 0;
-    isRunning = false;
-    thread.stop();
     try
     {
       invocation.invoke(target);
@@ -100,6 +97,6 @@ public class OKTimer implements Runnable
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+    stop();
   }
-
 }
