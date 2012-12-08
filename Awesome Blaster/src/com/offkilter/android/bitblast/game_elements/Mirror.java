@@ -30,6 +30,7 @@ public class Mirror extends Block
 
     shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, Color.DKGRAY);
 
+    health = 1;
     defaultDamage = 1;
     defaultSpeed = GameData.MIRROR_SPEED;
     setSpawnChance(800);
@@ -39,6 +40,7 @@ public class Mirror extends Block
   public void resetMirror()
   {
     resetMob();
+    health = 1;
     damage = 1;
     beenHit = false;
     speed = defaultSpeed;

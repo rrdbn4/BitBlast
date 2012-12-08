@@ -4,7 +4,7 @@ public class BaseMob extends BaseSprite
 {
   private boolean isMoving = false;
 
-  protected int health;
+  protected int health = -1;
 
   private int spawnChance = 0;
 
