@@ -105,7 +105,7 @@ public class Bullet extends BaseObject
       else if (mY >= surface.getHeight())
         resetBullet();
       else
-        mY += 2*speed;
+        mY += speed;
       
       if(burrakBoss.isMoving())
       {
