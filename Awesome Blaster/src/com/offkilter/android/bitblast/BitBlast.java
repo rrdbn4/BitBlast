@@ -52,7 +52,6 @@ import com.offkilter.android.bitblast.graphics.HUD;
 import com.offkilter.android.bitblast.graphics.Images;
 import com.offkilter.android.bitblast.graphics.SpriteBatcher;
 import com.offkilter.android.bitblast.sound.Sound;
-import com.offkilter.android.bitblast.utils.OKTimer;
 
 
 public class BitBlast extends Activity implements SensorEventListener, OnTouchListener, Drawer

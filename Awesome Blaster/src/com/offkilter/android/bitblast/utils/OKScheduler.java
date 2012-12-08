@@ -3,75 +3,89 @@ package com.offkilter.android.bitblast.utils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-//OKScheduler (Off Kilter Scheduler)
+import android.util.Log;
+
+//OKTimer (Off Kilter Timer)
 //Author: Robert Dunn
 
-
-public class OKTimer implements Runnable
+public class OKScheduler implements Runnable
 {
-  private Thread thread;
   private Object target;
-  private String method;
-  private Method invoker;
-  private float interval, elapsed;
+  private String selector;
+  private Method invocation;
+  private float interval = 0;
+  private float counter = 0;
+  private Thread thread;
   private boolean isRunning = false;
 
-  //Calls the specified method once then kills the timer
-  public void setAndStartTimer(Object target, String selector, float seconds)
+  
+  public void setMethodToCall(Object targ, String method, float seconds)
   {
-    this.target = target;
-    method = selector;
     interval = seconds;
+    selector = method;
+    target = targ;
+    
     try
     {
       Class<?> cls = target.getClass();
-      invoker = cls.getMethod(method);
-    }
-    catch (SecurityException e)
-    {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      invocation = cls.getMethod(selector);
     }
     catch (NoSuchMethodException e)
     {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    
-    thread = new Thread(this);
-    thread.start();
   }
   
+  public void start()
+  {
+    if(invocation != null)
+    {
+      thread = new Thread(this);
+      thread.start();
+      isRunning = true;
+    }
+    else
+      Log.e("Timer", "invocation has not been initialized");
+  }
+  
+  public void stop()
+  {
+    if(thread != null)
+    {
+      isRunning = false;
+      thread.stop();
+    }  
+  }
+
   @Override
   public void run()
   {
     while(isRunning)
-    {
+    { 
       try
       {
         Thread.sleep(1);
       }
       catch (InterruptedException e)
       {
-        // TODO Auto-generated catch block
         e.printStackTrace();
       }
       
-      elapsed += 0.001f;
-      if(elapsed >= interval)
-        invokeMethodAndCeaseTimer();
-    }  
+      counter += 0.001f;
+      if(counter >= interval)
+      {
+        counter = 0;
+        invokeMethod();
+      }
+    }
+    
   }
   
-  private void invokeMethodAndCeaseTimer()
+  private void invokeMethod()
   {
-    elapsed = 0;
-    interval = 0;
-    isRunning = false;
-    thread.stop();
     try
     {
-      invoker.invoke(target);
+      invocation.invoke(target);
     }
     catch (IllegalArgumentException e)
     {
@@ -89,5 +103,4 @@ public class OKTimer implements Runnable
       e.printStackTrace();
     }
   }
-
 }

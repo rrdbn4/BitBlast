@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.opengl.GLSurfaceView;
 
+import com.offkilter.android.bitblast.R;
 import com.offkilter.android.bitblast.data.GameData;
 import com.offkilter.android.bitblast.data.PowerupType;
 import com.offkilter.android.bitblast.game_elements.BaseMob;
@@ -15,8 +16,7 @@ import com.offkilter.android.bitblast.game_elements.Bullet;
 import com.offkilter.android.bitblast.game_elements.Hero;
 import com.offkilter.android.bitblast.graphics.Images;
 import com.offkilter.android.bitblast.graphics.SpriteBatcher;
-import com.offkilter.android.bitblast.utils.OKTimer;
-import com.offkilter.android.bitblast.R;
+import com.offkilter.android.bitblast.utils.OKScheduler;
 
 //TODO: the image of this boss should be a ship to match the theme of the game
 
@@ -34,7 +34,7 @@ public class Burrak extends BaseMob
 
   public Bullet bullets[];
   
-  private OKTimer timer;
+  private OKScheduler timer;
 
   public Burrak(Context context)
   {
@@ -49,7 +49,7 @@ public class Burrak extends BaseMob
     for (int i = 0; i < bullets.length; i++)
       bullets[i] = new Bullet(context, GameData.GOOBLER_BULLET_SPEED, 2);
     
-    timer = new OKTimer();
+    timer = new OKScheduler();
     timer.setMethodToCall(this, "notMad", 0.2f);
 
     resetBurrak();
