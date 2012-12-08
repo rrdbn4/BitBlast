@@ -24,6 +24,8 @@ public class Burrak extends BaseMob
 {
   private final int MAX_HEALTH = 20;
   private final int SHOOT_CHANCE = 100;
+  
+  private final int pointValue = 2000;
 
   private boolean isMovingRandomly;
   private boolean goingDown;
@@ -50,7 +52,7 @@ public class Burrak extends BaseMob
     timer = new OKTimer();
     timer.setMethodToCall(this, "notMad", 0.2f);
 
-    resetGoobler();
+    resetBurrak();
   }
   
   public void setIsMad(Boolean value)
@@ -58,11 +60,16 @@ public class Burrak extends BaseMob
     isMad = value;
   }
 
-  public void resetGoobler()
+  public void resetBurrak()
   {
     resetMob();
     health = MAX_HEALTH;
     isMad = isMovingRandomly = goingLeft = goingDown = false;
+  }
+  
+  public int getPointValue()
+  {
+    return pointValue;
   }
 
   public void damage(int amount)
@@ -170,7 +177,7 @@ public class Burrak extends BaseMob
     {
       if (gamedata.getState() == PowerupType.GOOBLER)
       {
-        resetGoobler();
+        resetBurrak();
         gamedata.setToNormal(0, gamedata, images, hero);
         startMoving();
 
@@ -179,7 +186,7 @@ public class Burrak extends BaseMob
       }
       else if (hero.getScore() >= 3000 && spawn())
       {
-        resetGoobler();
+        resetBurrak();
         startMoving();
 
         // TODO: Create better way to freeze objects
@@ -187,7 +194,7 @@ public class Burrak extends BaseMob
       }
       else if (hero.getScore() >= 0 && hero.getScore() <= 100)
       {
-        resetGoobler();
+        resetBurrak();
         startMoving();
 
         // TODO: Create better way to freeze objects
@@ -198,10 +205,15 @@ public class Burrak extends BaseMob
     // if spawned then move with this
     if (isMoving())
     {
-      if(isMad)
-        timer.start();
-        
-      moveTowardShip(surface, 3, hero, images.getEnemy());
+      if(health > 0)
+      {
+        if(isMad)
+          timer.start();
+          
+        moveTowardShip(surface, 3, hero, images.getEnemy());
+      }
+      else
+        resetBurrak();
     }
   }
 

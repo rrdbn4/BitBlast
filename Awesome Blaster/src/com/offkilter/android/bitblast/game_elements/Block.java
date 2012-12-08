@@ -140,52 +140,39 @@ public class Block extends BaseMob
   {
     if (isMoving())
     {
-      if (mY == 0)
+      if(health >  0)
       {
-        mY = 1;
-      }
-      else if (mY >= surface.getHeight())
-      {
-        // Log.d("Block.java", "Reset called");
-        resetBlock();
-      }
-      else
-      {
-        if (gamedata.getState() != PowerupType.FREEZE_BLOCKS)
-          mY += speed;
-
-        if (hit(hero))
+        if (mY == 0)
         {
-          if (!beenHit)
-          {
-            // When ship gets hit by block
-            beenHit = true;
-            hero.damage(gamedata, damage);
-          }
+          mY = 1;
         }
-
-        /*
-        for (int i = 0; i < hero.bullets.length; i++)
+        else if (mY >= surface.getHeight())
         {
-          if (hero.bullets[i].isMoving())
+          // Log.d("Block.java", "Reset called");
+          resetBlock();
+        }
+        else
+        {
+          if (gamedata.getState() != PowerupType.FREEZE_BLOCKS)
+            mY += speed;
+  
+          if (hit(hero))
           {
-            // when block encounters a bullet
-            if (hit(hero.bullets[i]))
+            if (!beenHit)
             {
-              damageBlock(gamedata, hero, i, sound);
-              hero.bullets[i].resetBullet();
-              i = hero.bullets.length; // break out of loop
+              // When ship gets hit by block
+              beenHit = true;
+              hero.damage(gamedata, damage);
             }
           }
         }
-        */
       }
+      else
+        resetBlock();
     }
     else
-    // if it isn't moving
     {
-      if (spawn() && !gamedata.getBlockFreeze() && gamedata.getState() != PowerupType.FREEZE_BLOCKS
-          && gamedata.hasMetGapThreshold())
+      if (spawn() && !gamedata.getBlockFreeze() && gamedata.getState() != PowerupType.FREEZE_BLOCKS && gamedata.hasMetGapThreshold())
       {
         // initialize block
         startMoving();

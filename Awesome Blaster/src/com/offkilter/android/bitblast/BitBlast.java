@@ -207,6 +207,9 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
   {
     hero.update(surface, gamedata);
     burrakBoss.update(surface, gamedata, hero, images);
+    
+    for (int i = 0; i < hero.bullets.length; i++)
+      hero.bullets[i].update(surface, gamedata, sound, burrakBoss, hero, block, mirror);
 
     for (int i = 0; i < burrakBoss.bullets.length; i++)
       burrakBoss.bullets[i].update(surface, gamedata, sound, burrakBoss, hero, block, mirror);
@@ -217,9 +220,6 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     for (int i = 0; i < mirror.length; i++)
       mirror[i].update(surface, gamedata, hero);
 
-    for (int i = 0; i < hero.bullets.length; i++)
-      hero.bullets[i].update(surface, gamedata, sound, burrakBoss, hero, block, mirror);
-
     powerup.update(surface, gamedata, hero);
     gamedata.incrementGapCounter();
   }
@@ -229,6 +229,9 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     background.draw(gl, spriteBatcher, surface, gamedata, hero);
     hero.draw(gl, spriteBatcher);
     burrakBoss.draw(gl, spriteBatcher);
+    
+    for (int i = 0; i < hero.bullets.length; i++)
+      hero.bullets[i].draw(gl, spriteBatcher);
 
     for (int i = 0; i < burrakBoss.bullets.length; i++)
       burrakBoss.bullets[i].draw(gl, spriteBatcher);
@@ -238,9 +241,6 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
 
     for (int i = 0; i < mirror.length; i++)
       mirror[i].draw(gl, spriteBatcher);
-
-    for (int i = 0; i < hero.bullets.length; i++)
-      hero.bullets[i].draw(gl, spriteBatcher);
 
     powerup.draw(gl, spriteBatcher, gamedata, images, hero);
 

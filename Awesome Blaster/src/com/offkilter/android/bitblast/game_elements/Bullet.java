@@ -111,9 +111,8 @@ public class Bullet extends BaseObject
           {
             if(playerBullet)
             {  
-              hero.addScore(2000);
+              hero.addScore(burrakBoss.getPointValue());
             }
-            burrakBoss.resetGoobler();
             gamedata.setAllBlockFreeze(false);
           }
           
@@ -134,14 +133,12 @@ public class Bullet extends BaseObject
           if(hit(block[i]))
           {
             block[i].damage(gamedata, damage, sound);
-            
             if(block[i].getHealth() <= 0)
             {
               if(playerBullet)
               {
                 hero.addScore(block[i].getPointValue());
               }
-              block[i].resetBlock();
             }
             resetBullet();
           }
@@ -164,9 +161,7 @@ public class Bullet extends BaseObject
                 hero.addScore(block[i].getPointValue());
               }
               resetBullet();
-              mirror[i].resetMirror();
-            }
-            
+            }  
           }
         }
       }

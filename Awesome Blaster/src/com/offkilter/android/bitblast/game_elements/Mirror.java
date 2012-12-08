@@ -48,20 +48,9 @@ public class Mirror extends Block
 
   public void update(GLSurfaceView surface, GameData gamedata, Hero hero)
   {
+    if (isMoving())
     {
-      if (!isMoving())
-      {
-        // add mirror
-        if (spawn() && !gamedata.getMirrorFreeze()
-            && gamedata.getState() != PowerupType.FREEZE_BLOCKS)
-        {
-          startMoving();
-          setXRandomly(surface.getWidth() - width);
-          mY = 0;
-        }
-      }
-      else
-      // if it is moving
+      if(health > 0)
       {
         if (mY == 0)
         {
@@ -86,8 +75,18 @@ public class Mirror extends Block
               hero.damage(gamedata, damage);
             }
           }
-
         }
+      }
+      else
+        resetMirror();
+    }
+    else
+    {
+      if (spawn() && !gamedata.getMirrorFreeze() && gamedata.getState() != PowerupType.FREEZE_BLOCKS)
+      {
+        startMoving();
+        setXRandomly(surface.getWidth() - width);
+        mY = 0;
       }
     }
   }
