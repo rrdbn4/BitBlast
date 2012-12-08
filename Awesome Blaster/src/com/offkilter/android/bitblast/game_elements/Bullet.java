@@ -112,6 +112,7 @@ public class Bullet extends BaseObject
             {  
               hero.addScore(2000);
               burrakBoss.resetGoobler();
+              gamedata.setAllBlockFreeze(false);
             }  
           
           resetBullet();
