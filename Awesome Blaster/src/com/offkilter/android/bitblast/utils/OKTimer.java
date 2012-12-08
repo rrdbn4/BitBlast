@@ -35,7 +35,7 @@ public class OKTimer implements Runnable
     }
   }
   
-  public void startTimer()
+  public void start()
   {
     if(invocation != null)
     {
@@ -47,7 +47,7 @@ public class OKTimer implements Runnable
       Log.e("Timer", "invocation has not been initialized");
   }
   
-  public void stopTimer()
+  public void stop()
   {
     if(thread != null)
     {

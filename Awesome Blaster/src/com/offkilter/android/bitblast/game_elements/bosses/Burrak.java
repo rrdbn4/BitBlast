@@ -78,7 +78,7 @@ public class Burrak extends BaseMob
   public void notMad()
   {
     isMad = false;
-    timer.stopTimer();
+    timer.stop();
   }
 
   private void moveTowardShip(GLSurfaceView surface, int speed, Hero hero, Bitmap picture)
@@ -203,7 +203,7 @@ public class Burrak extends BaseMob
     if (isMoving())
     {
       if(isMad)
-        timer.startTimer();
+        timer.start();
         
       moveTowardShip(surface, 3, hero, images.getEnemy());
     }
