@@ -107,13 +107,15 @@ public class Bullet extends BaseObject
           burrakBoss.takeDamage(damage);
           burrakBoss.setIsMad(true);
           
-          if(playerBullet)
-            if(burrakBoss.getHealth() <= 0)
+          if(burrakBoss.getHealth() <= 0)
+          {
+            if(playerBullet)
             {  
               hero.addScore(2000);
-              burrakBoss.resetGoobler();
-              gamedata.setAllBlockFreeze(false);
-            }  
+            }
+            burrakBoss.resetGoobler();
+            gamedata.setAllBlockFreeze(false);
+          }
           
           resetBullet();
         }
@@ -133,12 +135,14 @@ public class Bullet extends BaseObject
           {
             block[i].damageBlock(gamedata, damage, sound);
             
-            if(playerBullet)
-              if(block[i].getHealth() <= 0)
+            if(block[i].getHealth() <= 0)
+            {
+              if(playerBullet)
               {
                 hero.addScore(block[i].getPointValue());
-                block[i].resetBlock();
               }
+              block[i].resetBlock();
+            }
             resetBullet();
           }
         }
