@@ -107,8 +107,8 @@ public class Block extends BaseMob
         defaultSpeed = 1;
         break;
       default:
-        defaultSpeed = GameData.BLOCK_SPEED;
         Log.d("resetBlock(), Block.java", "Color not found.");
+        resetBlock();
         break;
     }
 
