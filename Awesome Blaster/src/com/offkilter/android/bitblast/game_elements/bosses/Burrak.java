@@ -123,7 +123,7 @@ public class Burrak extends BaseMob
           if (!bullets[i].isMoving())
           {
             bullets[i].shoot();
-            bullets[i].setmY(mY + bullets[i].getSpeed());
+            bullets[i].setmY(mY + height + bullets[i].getSpeed());
             bullets[i].setmX(mX + (width / 2));
             i = bullets.length;
           }
