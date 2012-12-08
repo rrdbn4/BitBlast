@@ -52,6 +52,27 @@ public class OKTimer implements Runnable
       isRunning = false;
     }  
   }
+  
+  public void setInterval(float seconds)
+  {
+    interval = seconds;
+  }
+  
+  public void setMethod(Object targ, String method)
+  {
+    selector = method;
+    target = targ;
+    
+    try
+    {
+      Class<?> cls = target.getClass();
+      invocation = cls.getMethod(selector);
+    }
+    catch (NoSuchMethodException e)
+    {
+      e.printStackTrace();
+    }
+  }
 
   @Override
   public void run()
