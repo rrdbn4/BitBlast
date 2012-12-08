@@ -65,7 +65,7 @@ public class Burrak extends BaseMob
     isMad = isMovingRandomly = goingLeft = goingDown = false;
   }
 
-  public void takeDamage(int amount)
+  public void damage(int amount)
   {
     health -= amount;
   }

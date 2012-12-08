@@ -111,7 +111,7 @@ public class Block extends BaseMob
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
   }
 
-  public void damageBlock(GameData gamedata, int damage, Sound sound)
+  public void damage(GameData gamedata, int damage, Sound sound)
   {
     health -= damage;
     if (health <= 0)
@@ -153,7 +153,7 @@ public class Block extends BaseMob
           {
             // When ship gets hit by block
             beenHit = true;
-            hero.damageShip(gamedata, damage);
+            hero.damage(gamedata, damage);
           }
         }
 

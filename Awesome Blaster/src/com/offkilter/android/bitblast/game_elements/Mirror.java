@@ -77,40 +77,13 @@ public class Mirror extends Block
           if (gamedata.getState() != PowerupType.FREEZE_BLOCKS)
             mY += speed;
 
-          /*
-          for (int k = 0; k < hero.bullets.length; k++)
-          {
-            // when mirror encounters a bullet
-            if (hit(hero.bullets[k]))
-            {
-              if (hero.getState() == PowerupType.BREAK_MIRRORS) // if mirror
-                                                                // break powerup
-              {
-                shrapnel.setStart(mX + (width / 2), mY + (height / 2));
-                // shrapnel.startShrapnel(gamedata, mX + (width / 2), mY +
-                // (height / 2), 7, 7, Color.DKGRAY);
-                resetMirror();
-                hero.bullets[k].resetBullet();
-              }
-              else
-              {
-                if (!hero.bullets[k].getHitMirror())
-                {
-                  hero.bullets[k].setSpeed(-hero.bullets[k].getSpeed());
-                  hero.bullets[k].setHitMirror(true);
-                }
-              }
-            }
-          }
-          */
-
           if (hit(hero))
           {
             if (!beenHit)
             {
               // When ship gets hit by block
               beenHit = true;
-              hero.damageShip(gamedata, damage);
+              hero.damage(gamedata, damage);
             }
           }
 

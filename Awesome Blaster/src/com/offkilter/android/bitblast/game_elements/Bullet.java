@@ -104,7 +104,7 @@ public class Bullet extends BaseObject
       {
         if(hit(burrakBoss))
         {
-          burrakBoss.takeDamage(damage);
+          burrakBoss.damage(damage);
           burrakBoss.setIsMad(true);
           
           if(burrakBoss.getHealth() <= 0)
@@ -123,7 +123,7 @@ public class Bullet extends BaseObject
       
       if(hit(hero))
       {
-        hero.damageShip(gamedata, damage);
+        hero.damage(gamedata, damage);
         resetBullet();
       }
       
@@ -133,7 +133,7 @@ public class Bullet extends BaseObject
         {
           if(hit(block[i]))
           {
-            block[i].damageBlock(gamedata, damage, sound);
+            block[i].damage(gamedata, damage, sound);
             
             if(block[i].getHealth() <= 0)
             {

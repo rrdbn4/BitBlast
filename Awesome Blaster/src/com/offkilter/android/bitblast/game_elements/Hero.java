@@ -142,7 +142,7 @@ public class Hero extends BaseMob
     return state;
   }
 
-  public void damageShip(GameData gamedata, int amount)
+  public void damage(GameData gamedata, int amount)
   {
     health -= amount;
     showDamage();
