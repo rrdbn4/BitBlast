@@ -17,7 +17,7 @@ public class OKTimer implements Runnable
   private boolean isRunning = false;
 
   //Calls the specified method once then kills the timer
-  public void setAndStartTimer(Object target, String selector, float seconds)
+  public void setMethod(Object target, String selector, float seconds)
   {
     this.target = target;
     method = selector;
@@ -59,11 +59,11 @@ public class OKTimer implements Runnable
       
       elapsed += 0.001f;
       if(elapsed >= interval)
-        invokeMethodAndCeaseTimer();
+        invokeMethod();
     }  
   }
   
-  private void invokeMethodAndCeaseTimer()
+  private void invokeMethod()
   {
     elapsed = 0;
     interval = 0;
