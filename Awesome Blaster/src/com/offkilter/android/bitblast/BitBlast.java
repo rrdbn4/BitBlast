@@ -1,11 +1,8 @@
 // TODO List
 // ======= Bugs =======
 // Problem with shrapnel: Uses bitmap of large picture and cuts from that... Spritebatcher needs to take in an image, not an id for more flexibility
-// - Continue button on death screen not working
-//
 //
 // ==Requires timer in new thread==
-// - Goobler staying red
 // - Powerups lasting forever
 // ====================
 
