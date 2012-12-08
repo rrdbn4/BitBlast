@@ -75,7 +75,8 @@ public class Mirror extends Block
           if (gamedata.getState() != PowerupType.FREEZE_BLOCKS)
             mY += speed;
 
-          for (int k = 0; k < GameData.BULLET_NUM; k++)
+          /*
+          for (int k = 0; k < hero.bullets.length; k++)
           {
             // when mirror encounters a bullet
             if (hit(hero.bullets[k]))
@@ -99,6 +100,7 @@ public class Mirror extends Block
               }
             }
           }
+          */
 
           if (hit(hero))
           {

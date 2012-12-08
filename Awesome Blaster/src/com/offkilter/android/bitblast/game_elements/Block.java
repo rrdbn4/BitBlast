@@ -111,16 +111,14 @@ public class Block extends BaseMob
     src = new Rect(srcX, srcY, width + srcX, height + srcY);
   }
 
-  public void damageBlock(GameData gamedata, Hero hero, int p, Sound sound)
+  public void damageBlock(GameData gamedata, int damage, Sound sound)
   {
-    health -= hero.bullets[p].getDamage();
-    hero.bullets[p].resetBullet();
+    health -= damage;
     if (health <= 0)
     {
       if (sound.getBlockExplosion() != 0 && gamedata.getPlaySound())
         sound.getBlowUp().play(sound.getExplosion(), 1, 1, 0, 0, 1);
 
-      gamedata.addScore(pointValue);
       shrapnel = new Shrapnel(GameData.leContext, GameData.SHRAPNEL_BLOWUP_SIZE, GameData.SHRAPNEL_BLOWUP_SIZE, color);
       shrapnel.setStart(mX + (width / 2), mY + (height / 2));
       resetBlock();
@@ -155,6 +153,7 @@ public class Block extends BaseMob
           }
         }
 
+        /*
         for (int i = 0; i < hero.bullets.length; i++)
         {
           if (hero.bullets[i].isMoving())
@@ -168,6 +167,7 @@ public class Block extends BaseMob
             }
           }
         }
+        */
       }
     }
     else

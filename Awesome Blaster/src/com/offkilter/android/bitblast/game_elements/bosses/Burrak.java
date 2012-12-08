@@ -96,7 +96,6 @@ public class Burrak extends BaseMob
           i = bullets.length;
         }
       }
-
       isMovingRandomly = (isMovingRandomly ? false : true);
     }
 
@@ -214,6 +213,7 @@ public class Burrak extends BaseMob
         moveTowardsShip(surface, 3, hero, images.getEnemyMad());
       }
 
+      /*
       for (int i = 0; i < hero.bullets.length; i++)
       {
         if (hero.bullets[i].isMoving())
@@ -233,6 +233,7 @@ public class Burrak extends BaseMob
           }
         }
       }
+      */
 
     }
   }

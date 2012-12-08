@@ -198,11 +198,11 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
 
   private void updateFrameInfo()
   {
-    hero.update(surface, gamedata, burrakBoss);
+    hero.update(surface, gamedata);
     burrakBoss.update(surface, gamedata, hero, images);
 
     for (int i = 0; i < burrakBoss.bullets.length; i++)
-      burrakBoss.bullets[i].update(surface, gamedata, sound);
+      burrakBoss.bullets[i].update(surface, gamedata, sound, burrakBoss, hero, block, mirror);
 
     for (int i = 0; i < block.length; i++)
       block[i].update(surface, gamedata, hero, sound);
@@ -211,7 +211,7 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
       mirror[i].update(surface, gamedata, hero);
 
     for (int i = 0; i < hero.bullets.length; i++)
-      hero.bullets[i].update(surface, gamedata, sound);
+      hero.bullets[i].update(surface, gamedata, sound, burrakBoss, hero, block, mirror);
 
     powerup.update(surface, gamedata, hero);
     gamedata.incrementGapCounter();

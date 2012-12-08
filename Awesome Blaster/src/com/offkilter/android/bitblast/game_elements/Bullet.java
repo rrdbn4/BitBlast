@@ -9,6 +9,7 @@ import android.opengl.GLSurfaceView;
 import android.util.Log;
 
 import com.offkilter.android.bitblast.data.GameData;
+import com.offkilter.android.bitblast.game_elements.bosses.Burrak;
 import com.offkilter.android.bitblast.graphics.SpriteBatcher;
 import com.offkilter.android.bitblast.sound.Sound;
 import com.offkilter.android.bitblast.R;
@@ -80,7 +81,7 @@ public class Bullet extends BaseObject
     return damage;
   }
 
-  public void update(GLSurfaceView surface, GameData gamedata, Sound sound)
+  public void update(GLSurfaceView surface, GameData gamedata, Sound sound, Burrak burrakBoss, Hero hero, Block[] block, Mirror[] mirror)
   {
     if (isMoving())
     {
@@ -92,6 +93,43 @@ public class Bullet extends BaseObject
           sound.getBang().play(sound.getExplosion(), 1, 1, 0, 0, 1);
         }
       }
+      
+      if(burrakBoss.isMoving())
+      {
+        if(hit(burrakBoss))
+        {
+          burrakBoss.takeDamage(damage);
+        }
+      }
+      
+      if(hit(hero))
+      {
+        hero.damageShip(gamedata, damage);
+      }
+      
+      for(int i = 0; i < block.length; i++)
+      {
+        if(block[i].isMoving())
+        {
+          if(hit(block[i]))
+          {
+            block[i].damageBlock(gamedata, damage, sound);
+            resetBullet();
+          }
+        }
+      }
+      
+      for(int i = 0; i < mirror.length; i++)
+      {
+        if(mirror[i].isMoving())
+        {
+          if(hit(mirror[i]))
+          {
+            speed = -speed;
+          }
+        }
+      }
+      
 
       if (mY - speed < 0)
         resetBullet();

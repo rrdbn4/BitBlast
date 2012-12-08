@@ -139,7 +139,7 @@ public class Hero extends BaseMob
     }
   }
 
-  public void update(GLSurfaceView surface, GameData gamedata, Burrak burrakBoss)
+  public void update(GLSurfaceView surface, GameData gamedata)
   {
     // position based on accelerometer
     if (((shipPosition - (change * 5)) > 0) && (shipPosition - (change * 5)) < (surface.getWidth() - getWidth()))
@@ -172,6 +172,7 @@ public class Hero extends BaseMob
     setmY((surface.getHeight() / 4) * 3);
     setmX(((int) shipPosition));
 
+    /*
     if (burrakBoss.isMoving())
     {
       for (int i = 0; i < burrakBoss.bullets.length; i++)
@@ -198,6 +199,7 @@ public class Hero extends BaseMob
         }
       }
     }
+    */
 
   }
 
