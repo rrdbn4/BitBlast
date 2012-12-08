@@ -3,6 +3,8 @@ package com.offkilter.android.bitblast.utils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import android.util.Log;
+
 //OKScheduler (Off Kilter Scheduler)
 //Author: Robert Dunn
 
@@ -12,7 +14,7 @@ public class OKTimer implements Runnable
   private Thread thread;
   private Object target;
   private String method;
-  private Method invoker;
+  private Method invocation;
   private float interval, elapsed;
   private boolean isRunning = false;
 
@@ -22,10 +24,11 @@ public class OKTimer implements Runnable
     this.target = target;
     method = selector;
     interval = seconds;
+    
     try
     {
       Class<?> cls = target.getClass();
-      invoker = cls.getMethod(method);
+      invocation = cls.getMethod(method);
     }
     catch (SecurityException e)
     {
@@ -37,9 +40,18 @@ public class OKTimer implements Runnable
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    
-    thread = new Thread(this);
-    thread.start();
+  }
+  
+  public void start()
+  {
+    if(invocation != null)
+    {
+      thread = new Thread(this);
+      thread.start();
+      isRunning = true;
+    }
+    else
+      Log.e("OKTimer.java", "Invocation has not been initialized.");
   }
   
   @Override
@@ -71,7 +83,7 @@ public class OKTimer implements Runnable
     thread.stop();
     try
     {
-      invoker.invoke(target);
+      invocation.invoke(target);
     }
     catch (IllegalArgumentException e)
     {

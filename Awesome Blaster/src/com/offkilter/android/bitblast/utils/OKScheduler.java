@@ -45,7 +45,7 @@ public class OKScheduler implements Runnable
       isRunning = true;
     }
     else
-      Log.e("Timer", "invocation has not been initialized");
+      Log.e("OKScheduler.java", "Invocation has not been initialized.");
   }
   
   public void stop()
