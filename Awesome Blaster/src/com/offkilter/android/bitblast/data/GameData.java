@@ -24,7 +24,6 @@ public class GameData
   private boolean mirrorFreeze = false;
   private boolean blockFreeze = false;
 
-  private int score = 0;
   private int prevScore = 0;
   private int explosion = 0;
   private int blockExplosion = 0;
@@ -152,16 +151,6 @@ public class GameData
   public boolean getMirrorFreeze()
   {
     return mirrorFreeze;
-  }
-
-  public void addScore(int value)
-  {
-    score += value;
-  }
-
-  public int getScore()
-  {
-    return score;
   }
 
   public boolean isAllowBlockSpawn()

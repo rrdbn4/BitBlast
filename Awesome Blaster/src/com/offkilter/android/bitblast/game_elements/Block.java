@@ -124,6 +124,11 @@ public class Block extends BaseMob
       resetBlock();
     }
   }
+  
+  public int getPointValue()
+  {
+    return pointValue;
+  }
 
   public void update(GLSurfaceView surface, GameData gamedata, Hero hero, Sound sound)
   {

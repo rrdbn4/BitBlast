@@ -17,6 +17,11 @@ public class BaseMob extends BaseSprite
   {
     isMoving = true;
   }
+  
+  public int getHealth()
+  {
+    return health;
+  }
 
   public boolean isMoving()
   {

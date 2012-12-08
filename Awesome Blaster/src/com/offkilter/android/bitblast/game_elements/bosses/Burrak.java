@@ -184,7 +184,7 @@ public class Burrak extends BaseMob
         // TODO: Create better way to freeze objects
         gamedata.setAllBlockFreeze(true);
       }
-      else if (gamedata.getScore() >= 3000 && spawn())
+      else if (hero.getScore() >= 3000 && spawn())
       {
         resetGoobler();
         startMoving();
@@ -192,7 +192,7 @@ public class Burrak extends BaseMob
         // TODO: Create better way to freeze objects
         gamedata.setAllBlockFreeze(true);
       }
-      else if (gamedata.getScore() >= 0 && gamedata.getScore() <= 100)
+      else if (hero.getScore() >= 0 && hero.getScore() <= 100)
       {
         resetGoobler();
         startMoving();

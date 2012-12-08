@@ -29,9 +29,9 @@ public class HUD
     pauseButton = BitmapFactory.decodeResource(context.getResources(), R.drawable.pause);
   }
 
-  public void displayScore(Canvas canvas, GameData gamedata)
+  public void displayScore(Canvas canvas, Hero hero)
   {
-    scoreLabel = "Score: " + gamedata.getScore();
+    scoreLabel = "Score: " + hero.getScore();
     Paint text = new Paint();
     text.setColor(Color.WHITE);
     text.setTextSize(50);

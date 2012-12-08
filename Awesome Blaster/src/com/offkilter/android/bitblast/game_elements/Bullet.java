@@ -16,6 +16,7 @@ import com.offkilter.android.bitblast.R;
 
 public class Bullet extends BaseObject
 {
+  private boolean playerBullet = false;
   private boolean playSound = false;
   private boolean hitMirror = false;
 
@@ -43,6 +44,11 @@ public class Bullet extends BaseObject
     speed = defaultSpeed;
     damage = defaultDamage;
     hitMirror = false;
+  }
+  
+  public void setIsPlayer(boolean value)
+  {
+    playerBullet = value;
   }
 
   public void shoot()
@@ -100,6 +106,11 @@ public class Bullet extends BaseObject
         {
           burrakBoss.takeDamage(damage);
           burrakBoss.setIsMad(true);
+          
+          if(playerBullet)
+            if(burrakBoss.getHeight() <= 0)
+              hero.addScore(2000);
+          
           resetBullet();
         }
       }
@@ -117,6 +128,11 @@ public class Bullet extends BaseObject
           if(hit(block[i]))
           {
             block[i].damageBlock(gamedata, damage, sound);
+            
+            if(playerBullet)
+              if(block[i].getHealth() <= 0)
+                hero.addScore(block[i].getPointValue());
+            
             resetBullet();
           }
         }
@@ -129,6 +145,16 @@ public class Bullet extends BaseObject
           if(hit(mirror[i]))
           {
             speed = -speed;
+            
+            if(mirror[i].getHealth() <= 0)
+            {
+              resetBullet();
+              if(playerBullet)
+              {
+                hero.addScore(block[i].getPointValue());
+              }
+            }
+            
           }
         }
       }

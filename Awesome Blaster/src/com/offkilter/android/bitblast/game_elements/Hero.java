@@ -21,6 +21,7 @@ import com.offkilter.android.bitblast.R;
 
 public class Hero extends BaseMob
 {
+  private int score = 0;
   private boolean wounded = false;
   private boolean showRed = false;
 
@@ -45,7 +46,10 @@ public class Hero extends BaseMob
     // TODO: Constant for defualt damage
     bullets = new Bullet[GameData.BULLET_NUM];
     for (int i = 0; i < bullets.length; i++)
+    {
       bullets[i] = new Bullet(context, GameData.HERO_BULLET_SPEED, 2);
+      bullets[i].setIsPlayer(true);
+    }
   }
 
   public void showDamage()
@@ -59,7 +63,7 @@ public class Hero extends BaseMob
     if (!gamedata.getDeathscreenHit())
     {
       Bundle finalInfo = new Bundle();
-      finalInfo.putInt(GameData.getScoreKey(), gamedata.getScore());
+      finalInfo.putInt(GameData.getScoreKey(), score);
       Intent intent = new Intent(GameData.leContext, DeathScreen.class);
       intent.putExtras(finalInfo);
       GameData.leContext.startActivity(intent);
@@ -102,6 +106,16 @@ public class Hero extends BaseMob
   {
     return wounded;
   }
+  
+  public void addScore(int value)
+  {
+    score += value;
+  }
+
+  public int getScore()
+  {
+    return score;
+  }
 
   public void setHealth(int value)
   {
@@ -134,7 +148,7 @@ public class Hero extends BaseMob
     showDamage();
     if (health <= 0)
     {
-      gamedata.setPrevScore(gamedata.getScore());
+      gamedata.setPrevScore(score);
       endGame(gamedata);
     }
   }
