@@ -197,11 +197,6 @@ public class BitBlast extends Activity implements SensorEventListener, OnTouchLi
     }
     return true;
   }
-  
-  public void heroShoot()
-  {
-    hero.shoot();
-  }
 
   // called every frame
   @Override
